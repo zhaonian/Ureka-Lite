@@ -9,12 +9,12 @@
         tools:showIn="@layout/app_bar_home"
         tools:context=".HomeActivity">
 
-    <!--<androidx.recyclerview.widget.RecyclerView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--tools:text="@tools:sample/full_names">-->
-
-    <!--</androidx.recyclerview.widget.RecyclerView>-->
+    <FrameLayout
+            android:id="@+id/contentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside">
+    </FrameLayout>
 
     <TextView
             android:id="@+id/message"

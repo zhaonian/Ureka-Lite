@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.activity_home.bottom_navigation
 import kotlinx.android.synthetic.main.content_home.message
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
 
+
+
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navHome -> {
-                message.text = "Home"
+                var selectedFragment = PostListFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navChannel -> {

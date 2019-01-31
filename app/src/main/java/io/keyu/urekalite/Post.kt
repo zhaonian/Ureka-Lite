@@ -5,7 +5,7 @@ import java.util.Date
 data class Post(
     var id: Long,
     var title: String,
-    var link: String,
+    var link: String?,
     var text: String,
     var liked: Boolean,
     var bookmarked: Boolean,
