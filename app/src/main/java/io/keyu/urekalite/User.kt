@@ -1,6 +1,6 @@
 package io.keyu.urekalite
 
-class User(
+data class User(
     var id: Long,
     var username: String,
     var displayName: String,
