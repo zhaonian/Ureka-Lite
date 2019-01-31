@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        nav_view.setNavigationItemSelectedListener(this)
+        top_navigation.setNavigationItemSelectedListener(this)
     }
 
     override fun onBackPressed() {
