@@ -7,8 +7,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
+import kotlinx.android.synthetic.main.activity_home.bottom_navigation
+import kotlinx.android.synthetic.main.content_home.message
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +28,34 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         top_navigation.setNavigationItemSelectedListener(this)
+        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        bottom_navigation.selectedItemId = R.id.navHome
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navHome -> {
+                message.text = "Home"
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navChannel -> {
+                message.text = "Channel"
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navSearch -> {
+                message.text = "Search"
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navNotification -> {
+                message.text = "Notification"
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navBookmark -> {
+                message.text = "Bookmark"
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
     }
 
     override fun onBackPressed() {
