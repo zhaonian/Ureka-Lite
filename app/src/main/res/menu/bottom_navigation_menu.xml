@@ -2,22 +2,22 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/home"
           android:title="Home"
-          android:icon="@drawable/ic_home_black_24dp"
+          android:icon="@drawable/ic_navbar_home_black_24dp"
           app:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/channel"
           android:title="Channel"
-          android:icon="@drawable/ic_menu_camera"
+          android:icon="@drawable/ic_navbar_channel_up_black_24dp"
           app:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/notification"
           android:title="Notification"
-          android:icon="@drawable/ic_menu_camera"
+          android:icon="@drawable/ic_navbar_notifications_black_24dp"
           app:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/search"
           android:title="Search"
-          android:icon="@drawable/ic_menu_camera"
+          android:icon="@drawable/ic_navbar_search_black_24dp"
           app:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/bookmark"
           android:title="Bookmark"
-          android:icon="@drawable/ic_menu_camera"
+          android:icon="@drawable/ic_navbar_bookmark_black_24dp"
           app:showAsAction="ifRoom|withText"/>
 </menu>
