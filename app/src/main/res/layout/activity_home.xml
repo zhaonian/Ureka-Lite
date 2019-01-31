@@ -24,16 +24,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_alignParentBottom="true"
-                app:menu="@menu/bottom_navigation_menu" />
+                app:menu="@menu/bottom_navigation_menu"/>
     </RelativeLayout>
 
-<com.google.android.material.navigation.NavigationView
-        android:id="@+id/top_navigation"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_home"
-        app:menu="@menu/activity_home_drawer"/>
+    <com.google.android.material.navigation.NavigationView
+            android:id="@+id/top_navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_home"
+            app:menu="@menu/activity_home_drawer"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
