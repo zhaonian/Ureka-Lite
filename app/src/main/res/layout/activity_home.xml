@@ -9,25 +9,6 @@
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-        <include
-                layout="@layout/app_bar_home"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_alignParentBottom="true"
-                app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-                app:menu="@menu/bottom_navigation_menu"/>
-    </RelativeLayout>
-
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/top_navigation"
             android:layout_width="wrap_content"
@@ -35,5 +16,10 @@
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header_home"
             app:menu="@menu/activity_home_drawer"/>
+
+    <include
+            layout="@layout/app_bar_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
