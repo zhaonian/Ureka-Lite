@@ -1,15 +1,18 @@
 package io.keyu.urekalite
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.app_bar_home.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_home.drawer_layout
+import kotlinx.android.synthetic.main.activity_home.top_navigation
+import kotlinx.android.synthetic.main.app_bar_home.toolbar
+import kotlinx.android.synthetic.main.app_bar_home.bottom_navigation
+
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,6 +28,33 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         top_navigation.setNavigationItemSelectedListener(this)
+        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        bottom_navigation.selectedItemId = R.id.navHome
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navHome -> {
+                var selectedFragment = PostListFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navChannel -> {
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navSearch -> {
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navNotification -> {
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navBookmark -> {
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
     }
 
     override fun onBackPressed() {
