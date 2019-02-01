@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.view_post.view.postTextView
+import kotlinx.android.synthetic.main.view_post.view.postOwnerDisplayName
 
 class PostRecyclerViewAdapter(private val myDataset: Array<Post>) :
     RecyclerView.Adapter<PostRecyclerViewAdapter.MyViewHolder>() {
@@ -25,6 +25,6 @@ class PostRecyclerViewAdapter(private val myDataset: Array<Post>) :
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         System.out.println(myDataset[position].title)
-        holder.cardView.postTextView.text = myDataset[position].title
+        holder.cardView.postOwnerDisplayName.text = myDataset[position].title
     }
 }
