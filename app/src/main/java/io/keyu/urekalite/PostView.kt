@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
 
 class PostView : MaterialCardView {
@@ -21,6 +22,8 @@ class PostView : MaterialCardView {
     private val postOwnerRole: TextView
     private val postImage: ImageView
     private val postText: TextView
+    private val likeLottieView: LottieAnimationView
+    private val bookmarkLottieView: LottieAnimationView
 
     init {
         View.inflate(context, R.layout.view_post, this) // inflate first before set below attrs, otherwise NPE
@@ -29,6 +32,8 @@ class PostView : MaterialCardView {
         postOwnerRole = findViewById(R.id.postOwnerRole)
         postImage = findViewById(R.id.postImage)
         postText = findViewById(R.id.postText)
+        likeLottieView = findViewById(R.id.likeLottieView)
+        bookmarkLottieView = findViewById(R.id.bookmarkLottieView)
     }
 
     fun setPostOwnerAvatar(@DrawableRes res: Int) {
@@ -49,5 +54,21 @@ class PostView : MaterialCardView {
 
     fun setPostText(text: String) {
         postText.text = text
+    }
+
+    fun likePost() {
+        likeLottieView.playAnimation()
+    }
+
+    fun unlikePost() {
+        likeLottieView.progress = 0f
+    }
+
+    fun bookmarkPost() {
+        bookmarkLottieView.playAnimation()
+    }
+
+    fun unbookmarkPost() {
+        bookmarkLottieView.progress = 0f
     }
 }

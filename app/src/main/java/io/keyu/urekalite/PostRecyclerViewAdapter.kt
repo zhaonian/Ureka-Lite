@@ -18,10 +18,12 @@ class PostRecyclerViewAdapter(private val myDataset: Array<Post>) :
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.postView.setPostOwnerDisplayName(myDataset[position].user.displayName)
-        holder.postView.setPostOwnerRole(myDataset[position].user.role)
-//        holder.postView.setPostOwnerAvatar(R.drawable.jay_chou)
-        holder.postView.setPostText(myDataset[position].text)
-        holder.postView.setPostImage(R.drawable.science)
+        holder.postView.apply {
+            setPostOwnerDisplayName(myDataset[position].user.displayName)
+            setPostOwnerRole(myDataset[position].user.role)
+            setPostOwnerAvatar(R.mipmap.ic_launcher_round)
+            setPostText(myDataset[position].text)
+            setPostImage(R.drawable.science)
+        }
     }
 }
