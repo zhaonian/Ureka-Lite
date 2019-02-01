@@ -66,11 +66,31 @@
                 android:background="#00000099"
                 android:includeFontPadding="false"
                 android:minLines="1"
-                android:maxLines = "2"
+                android:maxLines="2"
                 android:ellipsize="end"
                 android:padding="16dp"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
 
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:orientation="horizontal">
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/likeLottieView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="lottie_like.json"/>
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/bookmarkLottieView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="lottie_bookmark.json"/>
+        </LinearLayout>
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
