@@ -6,7 +6,7 @@ class PostListDataSource {
     val postList: Array<Post>? = arrayOf(
         Post(
             1L,
-            "a race car",
+            "Zhaonian Luan",
             null,
             "hehe",
             true,
@@ -24,7 +24,7 @@ class PostListDataSource {
         ),
         Post(
             1L,
-            "a race car",
+            "Zhaonian Luan",
             null,
             "hehe",
             true,
@@ -42,7 +42,7 @@ class PostListDataSource {
         ),
         Post(
             1L,
-            "a race car",
+            "Zhaonian Luan",
             null,
             "hehe",
             true,
@@ -60,7 +60,7 @@ class PostListDataSource {
         ),
         Post(
             1L,
-            "a race car",
+            "Zhaonian Luan",
             null,
             "hehe",
             true,
@@ -78,7 +78,7 @@ class PostListDataSource {
         ),
         Post(
             1L,
-            "a race car",
+            "Zhaonian Luan",
             null,
             "hehe",
             true,
@@ -96,7 +96,7 @@ class PostListDataSource {
         ),
         Post(
             1L,
-            "a race car",
+            "Zhaonian Luan",
             null,
             "hehe",
             true,
