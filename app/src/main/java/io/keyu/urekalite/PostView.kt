@@ -23,7 +23,7 @@ class PostView : MaterialCardView {
     private val postText: TextView
 
     init {
-        View.inflate(context, R.layout.view_post, this)
+        View.inflate(context, R.layout.view_post, this) // inflate first before set below attrs, otherwise NPE
         postOwnerDisplayName = findViewById(R.id.postOwnerDisplayName)
         postOwnerAvatar = findViewById(R.id.postOwnerAvatar)
         postOwnerRole = findViewById(R.id.postOwnerRole)
