@@ -8,9 +8,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
 import kotlinx.android.synthetic.main.app_bar_home.bottom_navigation
 
@@ -29,6 +31,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         top_navigation.setNavigationItemSelectedListener(this)
+        top_navigation.getHeaderView(0).setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         bottom_navigation.selectedItemId = R.id.navHome
     }
@@ -93,10 +100,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.navHeaderProfile -> {
-                val intent = Intent(this, ProfileActivity::class.java)
-                startActivity(intent)
-            }
             R.id.nav_camera -> {
                 // Handle the camera action
                 val intent = Intent(this, ProfileActivity::class.java)
