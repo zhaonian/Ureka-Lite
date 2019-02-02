@@ -102,8 +102,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_camera -> {
                 // Handle the camera action
-                val intent = Intent(this, ProfileActivity::class.java)
-                startActivity(intent)
             }
             R.id.nav_gallery -> {
 
@@ -121,7 +119,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
