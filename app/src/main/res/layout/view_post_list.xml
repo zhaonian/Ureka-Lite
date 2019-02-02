@@ -8,6 +8,9 @@
             android:id="@+id/postRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="8dp"
+            android:background="#E0E0E0"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
