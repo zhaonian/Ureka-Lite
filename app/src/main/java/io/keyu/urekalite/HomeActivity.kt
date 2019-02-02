@@ -40,6 +40,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottom_navigation.selectedItemId = R.id.navHome
     }
 
+    override fun onResume() {
+        super.onResume()
+        // remove the selected status on any item in drawer
+        for (i in 0 until top_navigation.menu.size()) {
+            top_navigation.menu.getItem(i).isChecked = false
+        }
+    }
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navHome -> {
