@@ -4,6 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:statusBarBackground="@color/colorPrimaryDark"
         android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -38,8 +39,7 @@
                     android:layout_height="?android:attr/actionBarSize"
                     android:minHeight="?android:attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
