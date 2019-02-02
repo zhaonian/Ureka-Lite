@@ -19,12 +19,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/bookmarkLottieView"
+            android:id="@+id/bookLottieView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:lottie_enableMergePathsForKitKatAndAbove="true"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_fileName="lottie_book.json"/>
-
 
 </LinearLayout>
