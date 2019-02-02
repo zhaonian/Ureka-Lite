@@ -71,11 +71,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingEnd="8dp"
+                android:gravity="right"
                 android:orientation="horizontal">
             <com.airbnb.lottie.LottieAnimationView
+                    android:layout_marginTop="6dp"
                     android:id="@+id/likeLottieView"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     app:lottie_fileName="lottie_like.json"/>
             <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/bookmarkLottieView"

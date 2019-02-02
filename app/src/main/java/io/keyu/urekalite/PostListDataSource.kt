@@ -10,7 +10,7 @@ class PostListDataSource {
             null,
             "hehe",
             false,
-            true,
+            false,
             Date(),
             listOf("a", "b", "c"),
             User(

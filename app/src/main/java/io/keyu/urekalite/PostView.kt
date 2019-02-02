@@ -36,10 +36,11 @@ class PostView : MaterialCardView {
         bookmarkLottieView = findViewById(R.id.bookmarkLottieView)
 
         likeLottieView.setOnClickListener {
-            if (likeLottieView.progress == 1f)
-                unlikePost()
-            else
-                likePost()
+            likePost()
+        }
+
+        bookmarkLottieView.setOnClickListener {
+            bookmarkPost()
         }
     }
 
@@ -72,7 +73,8 @@ class PostView : MaterialCardView {
     }
 
     fun likePost() {
-        likeLottieView.progress = 1f
+        likeLottieView.playAnimation()
+//        likeLottieView.progress = 1f
     }
 
     fun unlikePost() {
@@ -80,7 +82,8 @@ class PostView : MaterialCardView {
     }
 
     fun bookmarkPost() {
-        bookmarkLottieView.progress = 1f
+        bookmarkLottieView.playAnimation()
+//        bookmarkLottieView.progress = 1f
     }
 
     fun unbookmarkPost() {
