@@ -9,6 +9,11 @@
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
+    <include
+            layout="@layout/app_bar_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/top_navigation"
             android:layout_width="wrap_content"
@@ -16,10 +21,5 @@
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header_home"
             app:menu="@menu/activity_home_drawer"/>
-
-    <include
-            layout="@layout/app_bar_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
