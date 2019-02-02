@@ -9,25 +9,7 @@ class PostListDataSource {
             "Zhaonian Luan",
             null,
             "hehe",
-            true,
-            true,
-            Date(),
-            listOf("a", "b", "c"),
-            User(
-                1L,
-                "keyu",
-                "Kathy Gong",
-                null, "Software Engineer",
-                true,
-                "I'm an Engineer, not a Scientist"
-            )
-        ),
-        Post(
-            1L,
-            "Zhaonian Luan",
-            null,
-            "hehe",
-            true,
+            false,
             true,
             Date(),
             listOf("a", "b", "c"),
@@ -46,7 +28,25 @@ class PostListDataSource {
             null,
             "hehe",
             true,
-            true,
+            false,
+            Date(),
+            listOf("a", "b", "c"),
+            User(
+                1L,
+                "keyu",
+                "Kathy Gong",
+                null, "Software Engineer",
+                true,
+                "I'm an Engineer, not a Scientist"
+            )
+        ),
+        Post(
+            1L,
+            "Zhaonian Luan",
+            null,
+            "hehe",
+            false,
+            false,
             Date(),
             listOf("a", "b", "c"),
             User(

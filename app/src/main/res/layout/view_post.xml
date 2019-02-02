@@ -5,10 +5,6 @@
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/post_card_margin"
-        android:layout_marginLeft="@dimen/post_card_margin"
-        android:layout_marginRight="@dimen/post_card_margin"
-        app:cardCornerRadius="4dp"
         android:elevation="1dp"
         android:minHeight="200dp">
 

@@ -24,6 +24,8 @@ class PostRecyclerViewAdapter(private val myDataset: Array<Post>) :
             setPostOwnerAvatar(R.mipmap.ic_launcher_round)
             setPostText(myDataset[position].text)
             setPostImage(R.drawable.science)
+            setLikeState(myDataset[position].liked)
+            setBookmarkState(myDataset[position].bookmarked)
         }
     }
 }

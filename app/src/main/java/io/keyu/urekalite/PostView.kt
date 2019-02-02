@@ -34,6 +34,13 @@ class PostView : MaterialCardView {
         postText = findViewById(R.id.postText)
         likeLottieView = findViewById(R.id.likeLottieView)
         bookmarkLottieView = findViewById(R.id.bookmarkLottieView)
+
+        likeLottieView.setOnClickListener {
+            if (likeLottieView.progress == 1f)
+                unlikePost()
+            else
+                likePost()
+        }
     }
 
     fun setPostOwnerAvatar(@DrawableRes res: Int) {
@@ -56,8 +63,16 @@ class PostView : MaterialCardView {
         postText.text = text
     }
 
+    fun setLikeState(liked: Boolean) {
+        likeLottieView.progress = if (liked) 1f else 0f
+    }
+
+    fun setBookmarkState(bookmarked: Boolean) {
+        bookmarkLottieView.progress = if (bookmarked) 1f else 0f
+    }
+
     fun likePost() {
-        likeLottieView.playAnimation()
+        likeLottieView.progress = 1f
     }
 
     fun unlikePost() {
@@ -65,7 +80,7 @@ class PostView : MaterialCardView {
     }
 
     fun bookmarkPost() {
-        bookmarkLottieView.playAnimation()
+        bookmarkLottieView.progress = 1f
     }
 
     fun unbookmarkPost() {
