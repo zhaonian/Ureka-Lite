@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 
-class PostListFragment : Fragment() {
+class PostListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -35,5 +36,9 @@ class PostListFragment : Fragment() {
             adapter = viewAdapter
         }
         return rootView
+    }
+
+    override fun onRefresh() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
