@@ -29,6 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
+            app:itemBackground="@android:color/white"
+            android:background="@android:color/white"
+            app:elevation="10dp"
             app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
             app:menu="@menu/bottom_navigation_menu"/>
 

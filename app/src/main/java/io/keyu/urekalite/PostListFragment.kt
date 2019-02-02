@@ -25,6 +25,9 @@ class PostListFragment : Fragment() {
             // in content do not change the layout size of the RecyclerView
             setHasFixedSize(true)
 
+            // space between items
+            addItemDecoration(VerticalSpaceItemDecoration(36))
+
             // use a linear layout manager
             layoutManager = viewManager
 

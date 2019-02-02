@@ -1,30 +1,31 @@
 package io.keyu.urekalite
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.view_post.view.postOwnerDisplayName
 
 class PostRecyclerViewAdapter(private val myDataset: Array<Post>) :
-    RecyclerView.Adapter<PostRecyclerViewAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<PostViewHolder>() {
 
-    class MyViewHolder(val cardView: MaterialCardView) : RecyclerView.ViewHolder(cardView)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         // create a new view
-        val cardView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_post, parent, false) as MaterialCardView
+        val postView = PostView(parent.context)
         // set the view's size, margins, paddings and layout parameters
-        return MyViewHolder(cardView)
+        return PostViewHolder.from(postView)
     }
 
     override fun getItemCount(): Int = myDataset.size
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        System.out.println(myDataset[position].title)
-        holder.cardView.postOwnerDisplayName.text = myDataset[position].title
+        holder.postView.apply {
+            setPostOwnerDisplayName(myDataset[position].user.displayName)
+            setPostOwnerRole(myDataset[position].user.role)
+            setPostOwnerAvatar(R.mipmap.ic_launcher_round)
+            setPostText(myDataset[position].text)
+            setPostImage(R.drawable.science)
+            setLikeState(myDataset[position].liked)
+            setBookmarkState(myDataset[position].bookmarked)
+        }
     }
 }
