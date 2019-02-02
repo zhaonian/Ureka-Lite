@@ -49,6 +49,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navSearch -> {
+                var selectedFragment = SearchFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navNotification -> {
