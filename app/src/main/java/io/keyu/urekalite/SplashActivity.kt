@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun routeToAppropriatePage() {
         // Example routing
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, SignupActivity::class.java)
         startActivity(intent)
 //        when {
 //            user == null -> OnboardingActivity.start(this)
