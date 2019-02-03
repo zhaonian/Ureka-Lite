@@ -8,7 +8,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile.*
 
-
 class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +38,7 @@ class ProfileActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-        //no inspection SimplifiableIfStatement
+        // no inspection SimplifiableIfStatement
         return if (id == R.id.action_settings) {
             true
         } else super.onOptionsItemSelected(item)
