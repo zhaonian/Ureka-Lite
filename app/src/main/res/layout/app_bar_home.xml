@@ -16,7 +16,6 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
                 android:theme="@style/ToolbarTheme"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 app:layout_scrollFlags="scroll|enterAlways|snap"/>
@@ -24,5 +23,16 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_home"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            app:itemBackground="@android:color/white"
+            android:background="@android:color/white"
+            app:elevation="10dp"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            app:menu="@menu/bottom_navigation_menu"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

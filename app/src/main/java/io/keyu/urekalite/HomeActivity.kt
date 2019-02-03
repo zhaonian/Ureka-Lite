@@ -1,15 +1,18 @@
 package io.keyu.urekalite
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.app_bar_home.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_home.drawer_layout
+import kotlinx.android.synthetic.main.activity_home.top_navigation
+import kotlinx.android.synthetic.main.app_bar_home.toolbar
+import kotlinx.android.synthetic.main.app_bar_home.bottom_navigation
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,6 +28,55 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         top_navigation.setNavigationItemSelectedListener(this)
+        top_navigation.getHeaderView(0).setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            drawer_layout.closeDrawer(GravityCompat.START)
+        }
+
+        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        bottom_navigation.selectedItemId = R.id.navHome
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // remove the selected status on any item in drawer
+        for (i in 0 until top_navigation.menu.size()) {
+            top_navigation.menu.getItem(i).isChecked = false
+        }
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navHome -> {
+                var selectedFragment = PostListFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navChannel -> {
+                var selectedFragment = ChannelListFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navSearch -> {
+                var selectedFragment = SearchFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navNotification -> {
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navBookmark -> {
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
     }
 
     override fun onBackPressed() {
@@ -34,7 +86,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -59,22 +110,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             R.id.nav_gallery -> {
-
             }
             R.id.nav_slideshow -> {
-
             }
             R.id.nav_manage -> {
-
             }
             R.id.nav_share -> {
-
             }
             R.id.nav_send -> {
-
             }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
