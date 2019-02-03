@@ -34,6 +34,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         top_navigation.getHeaderView(0).setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            drawer_layout.closeDrawer(GravityCompat.START)
         }
 
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
