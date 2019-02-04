@@ -23,6 +23,7 @@ class ProfileActivity : AppCompatActivity() {
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material)
         toolbar.setNavigationOnClickListener {
             onBackPressed()
+            finish()
         }
     }
 
