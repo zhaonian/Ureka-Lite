@@ -7,6 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile.toolbar
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -25,6 +27,27 @@ class ProfileActivity : AppCompatActivity() {
             onBackPressed()
             finish()
         }
+
+        val collapsingToolbarLayout = findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout)
+        val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar)
+        appBarLayout.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
+            var isShow = true
+            var scrollRange = -1
+
+            override fun onOffsetChanged(appBarLayout: AppBarLayout, verticalOffset: Int) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.totalScrollRange
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbarLayout.title = "Zhaonian Luan"
+                    isShow = true
+                } else if (isShow) {
+                    collapsingToolbarLayout.title =
+                        " " // note there should a space between double quote otherwise it wont work
+                    isShow = false
+                }
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
