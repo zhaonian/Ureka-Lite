@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".SignupActivity">
 
-    <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/signupLottieView"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_gravity="top"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_fileName="lottie_lab_dudes.json"/>
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/signupContentContainer"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerInside">
+            android:background="#ffffff">
 
-    </FrameLayout>
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:minHeight="?android:attr/actionBarSize"/>
 
-</LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/signupLottieView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_fileName="lottie_lab_dudes.json"/>
+        <FrameLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/signupContentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

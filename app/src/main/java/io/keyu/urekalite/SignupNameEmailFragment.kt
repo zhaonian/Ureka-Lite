@@ -18,7 +18,10 @@ class SignupNameEmailFragment : Fragment() {
             val fragmentManager = activity!!.supportFragmentManager
             fragmentManager
                 .beginTransaction()
-                .setCustomAnimations(R.anim.slide_in_from_right_to_left, R.anim.slide_in_from_left_to_right)
+                .setCustomAnimations(
+                    R.anim.slide_in_right, R.anim.slide_out_left,
+                    R.anim.slide_in_left, R.anim.slide_out_right
+                )
                 .replace(R.id.signupContentContainer, SignupPasswordFragment())
                 .addToBackStack(null)
                 .commit()
