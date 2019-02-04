@@ -17,6 +17,7 @@ class SignupActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.signupContentContainer, SignupNameEmailFragment())
+            .addToBackStack(null)
             .commit()
     }
 }
