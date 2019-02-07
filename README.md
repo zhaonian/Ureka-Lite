@@ -5,6 +5,6 @@
 
 * Retrofit to get Text : https://square.github.io/retrofit/
 
-* Universal Image Loader to get Image: https://github.com/nostra13/Android-Universal-Image-Loader
+* FB fresco: https://frescolib.org/ 
 
 * Lottie: https://www.lottiefiles.com/
