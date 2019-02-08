@@ -1,15 +1,17 @@
 package io.keyu.urekalite.model
 
+import com.squareup.moshi.Json
 import java.util.Date
 
 data class Post(
-    var id: Long,
-    var title: String,
-    var link: String?,
-    var text: String,
-    var liked: Boolean,
-    var bookmarked: Boolean,
-    var creationDate: Date,
-    var media: List<String>,
-    var user: User
+    @Json(name = "id") val id: Long,
+    @Json(name = "title") val title: String,
+    val link: String?,
+    val text: String,
+    val liked: Boolean,
+    val bookmarked: Boolean,
+    val creationDate: Date,
+    val media: List<String>,
+    val user: User,
+    @Json(name = "url") val photo: String?
 )
