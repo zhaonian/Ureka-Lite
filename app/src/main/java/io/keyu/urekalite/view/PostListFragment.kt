@@ -1,4 +1,4 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import io.keyu.urekalite.model.PostListDataSource
+import io.keyu.urekalite.adapter.PostRecyclerViewAdapter
+import io.keyu.urekalite.R
 
 class PostListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -18,7 +21,8 @@ class PostListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView = inflater.inflate(R.layout.view_post_list, container, false)
         viewManager = LinearLayoutManager(context)
-        viewAdapter = PostRecyclerViewAdapter(PostListDataSource().postList ?: emptyArray())
+        viewAdapter =
+            PostRecyclerViewAdapter(PostListDataSource().postList ?: emptyArray())
 
         recyclerView = rootView.findViewById<RecyclerView>(R.id.postRecyclerView).apply {
             // use this setting to improve performance if you know that changes

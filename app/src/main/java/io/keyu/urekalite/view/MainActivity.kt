@@ -1,7 +1,8 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.keyu.urekalite.R
 
 class MainActivity : AppCompatActivity() {
 

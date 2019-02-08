@@ -10,13 +10,13 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".SplashActivity"
+                android:name=".view.SplashActivity"
                 android:theme="@style/AppTheme.Launcher">
 
         </activity>
 
         <activity
-                android:name=".LoginActivity"
+                android:name=".view.LoginActivity"
                 android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>
@@ -27,20 +27,20 @@
         </activity>
 
         <activity
-                android:name=".SignupActivity"
+                android:name=".view.SignupActivity"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-                android:name=".HomeActivity"
+                android:name=".view.HomeActivity"
                 android:label="@string/title_activity_home"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".view.MainActivity"></activity>
 
         <activity
-                android:name=".ProfileActivity"
+                android:name=".view.ProfileActivity"
                 android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
