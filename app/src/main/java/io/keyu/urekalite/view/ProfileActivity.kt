@@ -1,4 +1,4 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile.toolbar
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import io.keyu.urekalite.R
 
 class ProfileActivity : AppCompatActivity() {
 

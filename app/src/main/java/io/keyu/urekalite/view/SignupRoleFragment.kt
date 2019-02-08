@@ -1,4 +1,4 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
+import io.keyu.urekalite.R
 
 class SignupRoleFragment : Fragment() {
 
@@ -21,7 +22,10 @@ class SignupRoleFragment : Fragment() {
                     R.anim.slide_in_right, R.anim.slide_out_left,
                     R.anim.slide_in_left, R.anim.slide_out_right
                 )
-                .replace(R.id.signupContentContainer, SignupEmailConfirmationFragment())
+                .replace(
+                    R.id.signupContentContainer,
+                    SignupEmailConfirmationFragment()
+                )
                 .addToBackStack(null)
                 .commit()
         }

@@ -1,7 +1,10 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import io.keyu.urekalite.R
+import io.keyu.urekalite.model.Post
+import io.keyu.urekalite.view.PostView
 
 class PostRecyclerViewAdapter(private val myDataset: Array<Post>) :
     RecyclerView.Adapter<PostViewHolder>() {

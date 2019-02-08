@@ -1,4 +1,4 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
+import io.keyu.urekalite.R
 
 class PostView : MaterialCardView {
     @JvmOverloads

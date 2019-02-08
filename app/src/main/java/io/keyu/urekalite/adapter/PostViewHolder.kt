@@ -1,7 +1,8 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import io.keyu.urekalite.view.PostView
 
 class PostViewHolder private constructor(val postView: PostView) :
     RecyclerView.ViewHolder(postView) {

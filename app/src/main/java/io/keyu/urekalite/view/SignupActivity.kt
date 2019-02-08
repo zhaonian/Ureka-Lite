@@ -1,8 +1,9 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import io.keyu.urekalite.R
 import kotlinx.android.synthetic.main.activity_signup.toolbar
 
 class SignupActivity : AppCompatActivity() {
