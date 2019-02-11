@@ -1,7 +1,5 @@
 package io.keyu.urekalite.model
 
-import java.util.Date
-
 class PostListDataSource {
     val postList: Array<Post>? = arrayOf(
         Post(
@@ -11,7 +9,7 @@ class PostListDataSource {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"/>\n",
             false,
             false,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -30,7 +28,7 @@ class PostListDataSource {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"/>\n",
             true,
             false,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -49,7 +47,7 @@ class PostListDataSource {
             "hehe",
             false,
             false,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -68,7 +66,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -87,7 +85,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -106,7 +104,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -125,7 +123,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -144,7 +142,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -163,7 +161,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
@@ -182,7 +180,7 @@ class PostListDataSource {
             "hehe",
             true,
             true,
-            Date(),
+
             listOf("a", "b", "c"),
             User(
                 1L,
