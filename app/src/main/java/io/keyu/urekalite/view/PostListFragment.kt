@@ -16,19 +16,23 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class PostListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var swipeLayout: SwipeRefreshLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView = inflater.inflate(R.layout.view_post_list, container, false)
         getPostList()
         recyclerView = rootView.findViewById(R.id.postRecyclerView)
-        return rootView
-    }
 
-    override fun onRefresh() {
-        getPostList()
+        swipeLayout = rootView.findViewById(R.id.swipeLayout)
+        swipeLayout.setColorSchemeResources(R.color.colorPrimary)
+        swipeLayout.setOnRefreshListener {
+            getPostList()
+            swipeLayout.isRefreshing = false
+        }
+        return rootView
     }
 
     private fun getPostList() {
