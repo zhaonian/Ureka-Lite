@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:fresco="http://schemas.android.com/tools"
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,11 +49,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/postImage"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
-                android:src="@drawable/science"
+                fresco:placeholderImage="@drawable/science"
                 android:background="#000000"/>
         <TextView
                 android:id="@+id/postText"
