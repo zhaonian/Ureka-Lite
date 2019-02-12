@@ -1,8 +1,9 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import io.keyu.urekalite.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun routeToAppropriatePage() {
         // Example routing
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, SignupActivity::class.java)
         startActivity(intent)
 //        when {
 //            user == null -> OnboardingActivity.start(this)

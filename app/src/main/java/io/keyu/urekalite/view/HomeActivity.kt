@@ -1,4 +1,4 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.keyu.urekalite.R
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
@@ -22,7 +23,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawer_layout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
@@ -51,21 +54,21 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.navHome -> {
                 var selectedFragment = PostListFragment()
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.replace(R.id.homeContentContainer, selectedFragment)
                 transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navChannel -> {
                 var selectedFragment = ChannelListFragment()
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.replace(R.id.homeContentContainer, selectedFragment)
                 transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navSearch -> {
                 var selectedFragment = SearchFragment()
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.contentContainer, selectedFragment)
+                transaction.replace(R.id.homeContentContainer, selectedFragment)
                 transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }

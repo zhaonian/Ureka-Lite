@@ -1,4 +1,4 @@
-package io.keyu.urekalite
+package io.keyu.urekalite.model
 
 data class User(
     var id: Long,
