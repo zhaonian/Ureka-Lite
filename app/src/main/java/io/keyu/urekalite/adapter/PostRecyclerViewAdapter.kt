@@ -25,7 +25,7 @@ class PostRecyclerViewAdapter(private val myDataset: List<Post>) :
             setPostOwnerDisplayName(myDataset[position].user?.displayName ?: "")
             setPostOwnerRole(myDataset[position].user?.role ?: "")
             setPostOwnerAvatar(R.mipmap.ic_launcher_round)
-            setPostText(myDataset[position]?.title)
+            setPostText(myDataset[position].title)
             setPostImage(myDataset[position].photo)
             setLikeState(myDataset[position].liked)
             setBookmarkState(myDataset[position].bookmarked)

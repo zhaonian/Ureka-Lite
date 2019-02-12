@@ -12,14 +12,18 @@ import io.keyu.urekalite.adapter.PostRecyclerViewAdapter
 import io.keyu.urekalite.R
 import io.keyu.urekalite.model.Post
 import io.keyu.urekalite.service.PostDataService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 
 class PostListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeLayout: SwipeRefreshLayout
+    private val postList: MutableList<Post> = ArrayList()
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView = inflater.inflate(R.layout.view_post_list, container, false)
@@ -35,33 +39,46 @@ class PostListFragment : Fragment() {
         return rootView
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear() // to avoid memory leak
+    }
+
     private fun getPostList() {
         val retrofitInstance = PostDataService.retrofit
-
-        val call: Call<List<Post>> = retrofitInstance.getPosts()
-
-        call.enqueue(object : Callback<List<Post>> {
-            override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-            }
-
-            override fun onResponse(call: Call<List<Post>>?, response: Response<List<Post>>?) {
-                if (response != null && response.isSuccessful && response.body() != null) {
-                    recyclerView.apply {
-                        // use this setting to improve performance if you know that changes
-                        // in content do not change the layout size of the RecyclerView
-                        setHasFixedSize(true)
-
-                        // space between items
-                        addItemDecoration(VerticalSpaceItemDecoration(36))
-
-                        // use a linear layout manager
-                        layoutManager = LinearLayoutManager(context)
-
-                        val viewAdapter = PostRecyclerViewAdapter(response.body() ?: emptyList())
-                        recyclerView.adapter = viewAdapter
+        val postListObservable: Observable<List<Post>> = retrofitInstance.getPosts()
+        compositeDisposable.add(
+            postListObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .flatMapIterable { it }
+                .subscribeWith(object : DisposableObserver<Post>() {
+                    override fun onError(e: Throwable) {
+                        // if some error happens in our data layer our app will not crash, we will
+                        // get error here
                     }
-                }
-            }
-        })
+
+                    override fun onNext(post: Post) {
+                        postList.add(post)
+                    }
+
+                    override fun onComplete() {
+                        recyclerView.apply {
+                            // use this setting to improve performance if you know that changes
+                            // in content do not change the layout size of the RecyclerView
+                            setHasFixedSize(true)
+
+                            // space between items
+                            addItemDecoration(VerticalSpaceItemDecoration(36))
+
+                            // use a linear layout manager
+                            layoutManager = LinearLayoutManager(context)
+
+                            val viewAdapter = PostRecyclerViewAdapter(postList)
+                            recyclerView.adapter = viewAdapter
+                        }
+                    }
+                })
+        )
     }
 }
