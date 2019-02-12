@@ -1,10 +1,14 @@
 ![CircleCI](https://circleci.com/gh/zhaonian/Ureka-Lite.svg?style=shield&circle-token=b618ebcdb6af9367cb7c5a724ccd64668b311945)
 ## Note
 
-* Google Material Design Component Library: https://material.io/develop/android/components/material-card-view/
+* MVVM design pattern
 
-* Square Retrofit to get Text : https://square.github.io/retrofit/
+* reactivex RxKotlin RxAndroid operators: https://github.com/ReactiveX/RxKotlin
 
-* Facebook fresco: https://frescolib.org/ 
+* Square Retrofit for networking: https://square.github.io/retrofit/
+
+* Facebook fresco for images: https://frescolib.org/ 
 
 * Airbnb Lottie: https://www.lottiefiles.com/
+
+* Google Material Design Component Library: https://material.io/develop/android/components/material-card-view/
