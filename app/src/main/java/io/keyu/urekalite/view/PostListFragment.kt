@@ -8,40 +8,60 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import io.keyu.urekalite.model.PostListDataSource
 import io.keyu.urekalite.adapter.PostRecyclerViewAdapter
 import io.keyu.urekalite.R
+import io.keyu.urekalite.model.Post
+import io.keyu.urekalite.service.PostDataService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class PostListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class PostListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewManager: RecyclerView.LayoutManager
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var swipeLayout: SwipeRefreshLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView = inflater.inflate(R.layout.view_post_list, container, false)
-        viewManager = LinearLayoutManager(context)
-        viewAdapter =
-            PostRecyclerViewAdapter(PostListDataSource().postList ?: emptyArray())
+        getPostList()
+        recyclerView = rootView.findViewById(R.id.postRecyclerView)
 
-        recyclerView = rootView.findViewById<RecyclerView>(R.id.postRecyclerView).apply {
-            // use this setting to improve performance if you know that changes
-            // in content do not change the layout size of the RecyclerView
-            setHasFixedSize(true)
-
-            // space between items
-            addItemDecoration(VerticalSpaceItemDecoration(36))
-
-            // use a linear layout manager
-            layoutManager = viewManager
-
-            // specify an viewAdapter (see also next example)
-            adapter = viewAdapter
+        swipeLayout = rootView.findViewById(R.id.swipeLayout)
+        swipeLayout.setColorSchemeResources(R.color.colorPrimary)
+        swipeLayout.setOnRefreshListener {
+            getPostList()
+            swipeLayout.isRefreshing = false
         }
         return rootView
     }
 
-    override fun onRefresh() {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+    private fun getPostList() {
+        val retrofitInstance = PostDataService.retrofit
+
+        val call: Call<List<Post>> = retrofitInstance.getPosts()
+
+        call.enqueue(object : Callback<List<Post>> {
+            override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<List<Post>>?, response: Response<List<Post>>?) {
+                if (response != null && response.isSuccessful && response.body() != null) {
+                    recyclerView.apply {
+                        // use this setting to improve performance if you know that changes
+                        // in content do not change the layout size of the RecyclerView
+                        setHasFixedSize(true)
+
+                        // space between items
+                        addItemDecoration(VerticalSpaceItemDecoration(36))
+
+                        // use a linear layout manager
+                        layoutManager = LinearLayoutManager(context)
+
+                        val viewAdapter = PostRecyclerViewAdapter(response.body() ?: emptyList())
+                        recyclerView.adapter = viewAdapter
+                    }
+                }
+            }
+        })
     }
 }
