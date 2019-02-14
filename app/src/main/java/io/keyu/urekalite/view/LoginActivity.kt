@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.keyu.urekalite.R
+import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.Observables
 import kotlinx.android.synthetic.main.activity_login.loginBtn
 import kotlinx.android.synthetic.main.activity_login.signupLink
 import kotlinx.android.synthetic.main.activity_login.emailTextView
@@ -22,26 +24,47 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        compositeDisposable.addAll(
-            RxTextView.textChanges(emailTextView)
-                .map(this::isValidEmail)
-                .distinctUntilChanged()
-                .subscribe { isValid -> renderEmailValidationMsg(isValid) },
+        // email validation
+        val emailObservable = RxTextView.textChanges(emailTextView)
+        val emailObservableDisposable = emailObservable.map(this::isValidEmail)
+            .distinctUntilChanged()
+            .subscribe { isValid -> renderEmailValidationMsg(isValid) }
 
-            RxTextView.textChanges(passwordTextView)
-                .map(this::isValidPassword)
-                .distinctUntilChanged()
-                .subscribe { isValid -> renderPasswordValidationMsg(isValid) },
+        // password validation
+        val passwordObservable = RxTextView.textChanges(passwordTextView)
+        val passwordObservableDisposable = passwordObservable.map(this::isValidPassword)
+            .distinctUntilChanged()
+            .subscribe { isValid -> renderPasswordValidationMsg(isValid) }
 
-            RxView.clicks(loginBtn).subscribe {
-                startActivity(Intent(this, HomeActivity::class.java))
-                this.finish()
-            },
-
-            RxView.clicks(signupLink).subscribe {
-                startActivity(Intent(this, SignupActivity::class.java))
-                this.finish()
+        // loginBtn grey out when email || password not valid
+        val loginBtnCombinedObservable: Observable<Boolean> =
+            Observables.combineLatest(emailObservable, passwordObservable) { e: CharSequence, p: CharSequence ->
+                !e.isBlank() && !p.isBlank() && isValidEmail(e) && isValidPassword(p)
             }
+        val loginBtnCombinedObservableDisposable = loginBtnCombinedObservable.subscribe { isTouchable ->
+            run {
+                loginBtn.isEnabled = isTouchable
+            }
+        }
+
+        // loginBtn onClick
+        val loginBtnObservableDisposable = RxView.clicks(loginBtn).subscribe {
+            startActivity(Intent(this, HomeActivity::class.java))
+            this.finish()
+        }
+
+        // singup link onClick
+        val signupLinkObservableDisposable = RxView.clicks(signupLink).subscribe {
+            startActivity(Intent(this, SignupActivity::class.java))
+            this.finish()
+        }
+
+        compositeDisposable.addAll(
+            emailObservableDisposable,
+            passwordObservableDisposable,
+            loginBtnCombinedObservableDisposable,
+            loginBtnObservableDisposable,
+            signupLinkObservableDisposable
         )
     }
 
@@ -77,6 +100,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        compositeDisposable.clear()
+        compositeDisposable.dispose()
     }
 }
