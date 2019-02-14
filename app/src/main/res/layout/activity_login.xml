@@ -20,11 +20,11 @@
 
     <!-- Email Label -->
     <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:errorEnabled="true">
+            android:layout_marginBottom="8dp">
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailTextView"
                 android:layout_width="match_parent"
@@ -36,11 +36,11 @@
 
     <!-- Password Label -->
     <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:errorEnabled="true">
+            android:layout_marginBottom="8dp">
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordTextView"
                 android:layout_width="match_parent"
