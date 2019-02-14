@@ -24,14 +24,14 @@ class LoginActivity : AppCompatActivity() {
 
         compositeDisposable.addAll(
             RxTextView.textChanges(emailTextView)
-                .map(CharSequence::toString)
+                .map(this::isValidEmail)
                 .distinctUntilChanged()
-                .subscribe { input -> validateEmail(input) },
+                .subscribe { isValid -> renderEmailValidationMsg(isValid) },
 
             RxTextView.textChanges(passwordTextView)
-                .map(CharSequence::toString)
+                .map(this::isValidPassword)
                 .distinctUntilChanged()
-                .subscribe { input -> validatePassword(input) },
+                .subscribe { isValid -> renderPasswordValidationMsg(isValid) },
 
             RxView.clicks(loginBtn).subscribe {
                 startActivity(Intent(this, HomeActivity::class.java))
@@ -45,8 +45,12 @@ class LoginActivity : AppCompatActivity() {
         )
     }
 
-    private fun validateEmail(email: String) {
-        if (email.isNullOrBlank() || android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+    private fun isValidEmail(email: CharSequence): Boolean {
+        return (email.isNullOrBlank() || android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
+    }
+
+    private fun renderEmailValidationMsg(emailCorrect: Boolean) {
+        if (emailCorrect) {
             emailTextLayout.isErrorEnabled = false
         } else {
             emailTextLayout.apply {
@@ -56,8 +60,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun validatePassword(password: String) {
-        if (password.isNullOrBlank() || (password.length in 6..32)) {
+    private fun isValidPassword(password: CharSequence): Boolean {
+        return (password.isNullOrBlank() || (password.length in 6..32))
+    }
+
+    private fun renderPasswordValidationMsg(passwordCorrect: Boolean) {
+        if (passwordCorrect) {
             passwordTextLayout.isErrorEnabled = false
         } else {
             passwordTextLayout.apply {
