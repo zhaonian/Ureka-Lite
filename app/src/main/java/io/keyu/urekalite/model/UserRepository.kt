@@ -8,6 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
+import com.squareup.moshi.Moshi
 
 class UserRepository {
 
@@ -45,9 +46,12 @@ class UserRepository {
                                 response.body()
                             )
                         } else {
+                            val errorBodyAdapter = Moshi.Builder().build().adapter<ErrorResponse>(ErrorResponse::class.java)
+                            val errorBody = errorBodyAdapter.fromJson(response.errorBody()?.string()!!)
                             Resource(
                                 Status.ERROR,
-                                response.body()
+                                response.body(),
+                                errorBody?.error
                             )
                         }
                     }
