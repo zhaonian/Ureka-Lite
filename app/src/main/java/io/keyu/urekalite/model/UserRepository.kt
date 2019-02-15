@@ -7,6 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 
 class UserRepository {
 
@@ -15,38 +16,44 @@ class UserRepository {
 
     fun getUserLiveData(user: UserLoginRequest): MutableLiveData<Resource<User>> {
         val retrofitInstance: UserDataService = UserDataService.retrofit
-        val userObservable: Observable<User> = retrofitInstance.loginUser(user)
-        var user: User? = null
+        val userObservable: Observable<Response<User>> = retrofitInstance.loginUser(user)
+        var userResource: Resource<User>? = null
         compositeDisposable.add(
             userObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<User>() {
+                .subscribeWith(object : DisposableObserver<Response<User>>() {
 
                     override fun onStart() {
                         super.onStart()
-                        userLiveData.postValue(Resource(Status.LOADING, user, null))
+                        userLiveData.postValue(Resource(Status.LOADING, null, null))
                     }
 
                     override fun onError(e: Throwable) {
-                        // if some error happens in our data layer our app will not crash, we will
-                        // get error here
-                        user = null
-                        userLiveData.postValue(
-                            Resource(
-                                Status.ERROR,
-                                user,
-                                e.message
-                            )
+                        // Network error
+                        userResource = Resource(
+                            Status.ERROR,
+                            null,
+                            e.message
                         )
                     }
 
-                    override fun onNext(data: User) {
-                        user = data
+                    override fun onNext(response: Response<User>) {
+                        userResource = if (response.code() == 200) {
+                            Resource(
+                                Status.SUCCESS,
+                                response.body()
+                            )
+                        } else {
+                            Resource(
+                                Status.ERROR,
+                                response.body()
+                            )
+                        }
                     }
 
                     override fun onComplete() {
-                        userLiveData.postValue(Resource(Status.SUCCESS, user, null))
+                        userLiveData.postValue(userResource)
                     }
                 })
         )

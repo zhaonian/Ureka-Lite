@@ -125,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
             .observe(this, Observer<Resource<User>> { resource ->
                 Toast.makeText(
                     this,
-                    resource.data?.username + "-" + resource.status.toString() + resource.message,
+                    resource?.data?.username + "-" + resource?.status?.toString() + "-" + resource?.message,
                     Toast.LENGTH_LONG
                 ).show()
             })

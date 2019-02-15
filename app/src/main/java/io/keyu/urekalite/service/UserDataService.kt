@@ -5,6 +5,7 @@ import io.keyu.urekalite.model.UserLoginRequest
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -14,7 +15,7 @@ import retrofit2.http.PUT
 interface UserDataService {
 
     @PUT("login")
-    fun loginUser(@Body user: UserLoginRequest): Observable<User>
+    fun loginUser(@Body user: UserLoginRequest): Observable<Response<User>>
 
     companion object {
 
