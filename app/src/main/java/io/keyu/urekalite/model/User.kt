@@ -9,6 +9,11 @@ data class User(
     var avatar: String?,
     @field:Json(name = "role") val role: String,
     var orcidVerified: Boolean,
-    var bio: String?
-//    @field:Json(name = "token") val authToken: String?
+    var bio: String?,
+    @field:Json(name = "token") val authToken: String
+)
+
+data class UserLoginRequest(
+    val email: String,
+    val password: String
 )

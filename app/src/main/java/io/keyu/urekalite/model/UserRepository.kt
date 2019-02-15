@@ -1,5 +1,6 @@
 package io.keyu.urekalite.model
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import io.keyu.urekalite.service.UserDataService
 import io.reactivex.Observable
@@ -13,9 +14,9 @@ class UserRepository {
     private val userLiveData: MutableLiveData<User> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    fun getUserLiveData(email: String, password: String): MutableLiveData<User> {
+    fun getUserLiveData(user: UserLoginRequest): MutableLiveData<User> {
         val retrofitInstance: UserDataService = UserDataService.retrofit
-        val userObservable: Observable<User> = retrofitInstance.loginUser(email, password)
+        val userObservable: Observable<User> = retrofitInstance.loginUser(user)
         var user: User? = null
         compositeDisposable.add(
             userObservable
@@ -33,6 +34,7 @@ class UserRepository {
 
                     override fun onComplete() {
                         userLiveData.postValue(user)
+                        Log.d("haha", user!!.username)
                     }
                 })
         )

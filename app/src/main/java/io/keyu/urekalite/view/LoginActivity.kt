@@ -2,7 +2,7 @@ package io.keyu.urekalite.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -10,6 +10,7 @@ import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.keyu.urekalite.R
 import io.keyu.urekalite.model.User
+import io.keyu.urekalite.model.UserLoginRequest
 import io.keyu.urekalite.viewmodel.UserViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -58,8 +59,8 @@ class LoginActivity : AppCompatActivity() {
         // loginBtn onClick
         val loginBtnObservableDisposable = RxView.clicks(loginBtn).subscribe {
             loginUser()
-            startActivity(Intent(this, HomeActivity::class.java))
-            this.finish()
+//            startActivity(Intent(this, HomeActivity::class.java))
+//            this.finish()
         }
 
         // singup link onClick
@@ -114,9 +115,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser() {
-        userViewModel.loginUser(emailTextView.text.toString(), passwordTextView.text.toString())
-            .observe(this, Observer<User> {
-                data -> Log.d("hehe", data.username + "-" + data.role)
-        })
+        userViewModel.loginUser(UserLoginRequest(emailTextView.text.toString(), passwordTextView.text.toString()))
+            .observe(this, Observer<User> { data ->
+                Toast.makeText(this, data.username + "-" + data.role, Toast.LENGTH_LONG).show()
+            })
     }
 }
