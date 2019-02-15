@@ -1,42 +1,42 @@
 package io.keyu.urekalite.model
 
 import androidx.lifecycle.MutableLiveData
-import io.keyu.urekalite.service.PostDataService
+import io.keyu.urekalite.service.UserDataService
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-class PostListRepository {
+class UserRepository {
 
-    private val postListLiveData: MutableLiveData<List<Post>> = MutableLiveData()
+    private val userLiveData: MutableLiveData<User> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    fun getPostListLiveData(): MutableLiveData<List<Post>> {
-        val postList: MutableList<Post> = ArrayList()
-        val retrofitInstance = PostDataService.retrofit
-        val postListObservable = retrofitInstance.getPosts()
+    fun getUserLiveData(email: String, password: String): MutableLiveData<User> {
+        val retrofitInstance: UserDataService = UserDataService.retrofit
+        val userObservable: Observable<User> = retrofitInstance.loginUser(email, password)
+        var user: User? = null
         compositeDisposable.add(
-            postListObservable
+            userObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .flatMapIterable { it }
-                .subscribeWith(object : DisposableObserver<Post>() {
+                .subscribeWith(object : DisposableObserver<User>() {
                     override fun onError(e: Throwable) {
                         // if some error happens in our data layer our app will not crash, we will
                         // get error here
                     }
 
-                    override fun onNext(post: Post) {
-                        postList.add(post)
+                    override fun onNext(data: User) {
+                        user = data
                     }
 
                     override fun onComplete() {
-                        postListLiveData.postValue(postList)
+                        userLiveData.postValue(user)
                     }
                 })
         )
-        return postListLiveData
+        return userLiveData
     }
 
     fun clear() {

@@ -2,10 +2,15 @@ package io.keyu.urekalite.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.keyu.urekalite.R
+import io.keyu.urekalite.model.User
+import io.keyu.urekalite.viewmodel.UserViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.Observables
@@ -19,10 +24,13 @@ import kotlinx.android.synthetic.main.activity_login.passwordTextLayout
 class LoginActivity : AppCompatActivity() {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
         // email validation
         val emailObservable = RxTextView.textChanges(emailTextView)
@@ -49,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
         // loginBtn onClick
         val loginBtnObservableDisposable = RxView.clicks(loginBtn).subscribe {
+            loginUser()
             startActivity(Intent(this, HomeActivity::class.java))
             this.finish()
         }
@@ -66,6 +75,12 @@ class LoginActivity : AppCompatActivity() {
             loginBtnObservableDisposable,
             signupLinkObservableDisposable
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
+        userViewModel.clear()
     }
 
     private fun isValidEmail(email: CharSequence): Boolean {
@@ -98,8 +113,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        compositeDisposable.dispose()
+    private fun loginUser() {
+        userViewModel.loginUser(emailTextView.text.toString(), passwordTextView.text.toString())
+            .observe(this, Observer<User> {
+                data -> Log.d("hehe", data.username + "-" + data.role)
+        })
     }
 }
