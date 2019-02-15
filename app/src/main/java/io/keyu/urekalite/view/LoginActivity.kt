@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.keyu.urekalite.R
+import io.keyu.urekalite.model.Resource
 import io.keyu.urekalite.model.User
 import io.keyu.urekalite.model.UserLoginRequest
 import io.keyu.urekalite.viewmodel.UserViewModel
@@ -116,8 +117,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser() {
         userViewModel.loginUser(UserLoginRequest(emailTextView.text.toString(), passwordTextView.text.toString()))
-            .observe(this, Observer<User> { data ->
-                Toast.makeText(this, data.username + "-" + data.role, Toast.LENGTH_LONG).show()
+            .observe(this, Observer<Resource<User>> { resource ->
+                Toast.makeText(
+                    this,
+                    resource.data?.username + "-" + resource.status.toString() + resource.message,
+                    Toast.LENGTH_LONG
+                ).show()
             })
     }
 }
