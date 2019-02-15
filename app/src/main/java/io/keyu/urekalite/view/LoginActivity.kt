@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_login.emailTextView
 import kotlinx.android.synthetic.main.activity_login.emailTextLayout
 import kotlinx.android.synthetic.main.activity_login.passwordTextView
 import kotlinx.android.synthetic.main.activity_login.passwordTextLayout
+import android.view.inputmethod.InputMethodManager
 
 class LoginActivity : AppCompatActivity() {
 
@@ -59,6 +60,10 @@ class LoginActivity : AppCompatActivity() {
 
         // loginBtn onClick
         val loginBtnObservableDisposable = RxView.clicks(loginBtn).subscribe {
+            (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                passwordTextView.windowToken,
+                0
+            )
             loginUser()
 //            startActivity(Intent(this, HomeActivity::class.java))
 //            this.finish()
