@@ -1,71 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:gravity="center"
-            android:fontFamily="@font/pacifico"
-            android:textSize="30sp"/>
-
-    <!-- Email Label -->
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailTextLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailTextView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/loginLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="32"
-                android:inputType="textEmailAddress"
-                android:hint="Email"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Password Label -->
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordTextLayout"
+                android:layout_gravity="center"
+                android:gravity="center">
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordTextView"
+            android:layout_height="match_parent"
+            android:paddingTop="56dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+        <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="32"
-                android:inputType="textPassword"
-                android:hint="Password"/>
-    </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/app_name"
+                android:gravity="center"
+                android:fontFamily="@font/pacifico"
+                android:textSize="30sp"/>
 
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginBtn"
-            android:layout_width="match_parent"
+        <!-- Email Label -->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="32"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password Label -->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="32"
+                    android:inputType="textPassword"
+                    android:hint="Password"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:padding="12dp"
+                android:theme="@style/Base.V14.Theme.MaterialComponents.Light"
+                android:background="@color/colorPrimary"
+                android:text="Login"/>
+
+        <TextView
+                android:id="@+id/signupLink"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="sign up"
+                android:gravity="center"
+                android:textSize="16dip"/>
+
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loginLoader"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp"
-            android:padding="12dp"
-            android:theme="@style/Base.V14.Theme.MaterialComponents.Light"
-            android:background="@color/colorPrimary"
-            android:text="Login"/>
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_fileName="material_wave_loading.json"
+            app:lottie_scale="0.4"/>
 
-    <TextView
-            android:id="@+id/signupLink"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="sign up"
-            android:gravity="center"
-            android:textSize="16dip"/>
-
-</LinearLayout>
+</RelativeLayout>

@@ -2,7 +2,7 @@ package io.keyu.urekalite.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,7 +22,11 @@ import kotlinx.android.synthetic.main.activity_login.emailTextView
 import kotlinx.android.synthetic.main.activity_login.emailTextLayout
 import kotlinx.android.synthetic.main.activity_login.passwordTextView
 import kotlinx.android.synthetic.main.activity_login.passwordTextLayout
+import kotlinx.android.synthetic.main.activity_login.loginLoader
+import kotlinx.android.synthetic.main.activity_login.loginLayout
 import android.view.inputmethod.InputMethodManager
+import com.google.android.material.snackbar.Snackbar
+import io.keyu.urekalite.model.Status
 
 class LoginActivity : AppCompatActivity() {
 
@@ -65,8 +69,6 @@ class LoginActivity : AppCompatActivity() {
                 0
             )
             loginUser()
-//            startActivity(Intent(this, HomeActivity::class.java))
-//            this.finish()
         }
 
         // singup link onClick
@@ -123,11 +125,16 @@ class LoginActivity : AppCompatActivity() {
     private fun loginUser() {
         userViewModel.loginUser(UserLoginRequest(emailTextView.text.toString(), passwordTextView.text.toString()))
             .observe(this, Observer<Resource<User>> { resource ->
-                Toast.makeText(
-                    this,
-                    resource?.data?.username + "-" + resource?.status?.toString() + "-" + resource?.message,
-                    Toast.LENGTH_LONG
-                ).show()
+                loginLoader.visibility = if (resource.status == Status.LOADING) View.VISIBLE else View.GONE
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        startActivity(Intent(this, HomeActivity::class.java))
+                        this.finish()
+                    }
+                    Status.ERROR -> {
+                        Snackbar.make(loginLayout, resource.message ?: "Login Error", Snackbar.LENGTH_SHORT).show()
+                    }
+                }
             })
     }
 }
