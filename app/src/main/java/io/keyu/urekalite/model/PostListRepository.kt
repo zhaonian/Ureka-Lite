@@ -7,9 +7,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-class PostListRepository() {
+class PostListRepository {
 
-    private var postListLiveData: MutableLiveData<List<Post>> = MutableLiveData()
+    private val postListLiveData: MutableLiveData<List<Post>> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     fun getPostListLiveData(): MutableLiveData<List<Post>> {
