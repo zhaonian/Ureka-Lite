@@ -26,22 +26,22 @@ class UserRepository {
 
                     override fun onStart() {
                         super.onStart()
-                        userLiveData.postValue(Resource(Status.LOADING, null, null))
+                        userLiveData.value = (Resource(Status.LOADING, null, null))
                     }
 
                     override fun onError(e: Throwable) {
                         // Network error
-                        userLiveData.postValue(Resource(Status.ERROR, null, e.message))
+                        userLiveData.value = (Resource(Status.ERROR, null, e.message))
                     }
 
                     override fun onNext(response: Response<User>) {
                         if (response.code() == 200) {
-                            userLiveData.postValue(Resource(Status.SUCCESS, response.body()))
+                            userLiveData.value = (Resource(Status.SUCCESS, response.body()))
                         } else {
                             val errorBodyAdapter =
                                 Moshi.Builder().build().adapter<ErrorResponse>(ErrorResponse::class.java)
                             val errorBody = errorBodyAdapter.fromJson(response.errorBody()?.string()!!)
-                            userLiveData.postValue(Resource(Status.ERROR, response.body(), errorBody?.error))
+                            userLiveData.value = (Resource(Status.ERROR, response.body(), errorBody?.error))
                         }
                     }
 

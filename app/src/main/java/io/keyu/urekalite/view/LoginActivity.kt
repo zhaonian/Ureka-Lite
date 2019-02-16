@@ -125,13 +125,17 @@ class LoginActivity : AppCompatActivity() {
     private fun loginUser() {
         userViewModel.loginUser(UserLoginRequest(emailTextView.text.toString(), passwordTextView.text.toString()))
             .observe(this, Observer<Resource<User>> { resource ->
-                loginLoader.visibility = if (resource.status == Status.LOADING) View.VISIBLE else View.GONE
                 when (resource.status) {
+                    Status.LOADING -> {
+                        loginLoader.visibility = View.VISIBLE
+                    }
                     Status.SUCCESS -> {
                         startActivity(Intent(this, HomeActivity::class.java))
+                        loginLoader.visibility = View.GONE
                         this.finish()
                     }
                     Status.ERROR -> {
+                        loginLoader.visibility = View.GONE
                         Snackbar.make(loginLayout, resource.message ?: "Login Error", Snackbar.LENGTH_SHORT).show()
                     }
                 }
