@@ -18,7 +18,6 @@ class UserRepository {
     fun getUserLiveData(user: UserLoginRequest): MutableLiveData<Resource<User>> {
         val retrofitInstance: UserDataService = UserDataService.retrofit
         val userObservable: Observable<Response<User>> = retrofitInstance.loginUser(user)
-        var userResource: Resource<User>? = null
         compositeDisposable.add(
             userObservable
                 .subscribeOn(Schedulers.io())
@@ -32,32 +31,21 @@ class UserRepository {
 
                     override fun onError(e: Throwable) {
                         // Network error
-                        userResource = Resource(
-                            Status.ERROR,
-                            null,
-                            e.message
-                        )
+                        userLiveData.postValue(Resource(Status.ERROR, null, e.message))
                     }
 
                     override fun onNext(response: Response<User>) {
-                        userResource = if (response.code() == 200) {
-                            Resource(
-                                Status.SUCCESS,
-                                response.body()
-                            )
+                        if (response.code() == 200) {
+                            userLiveData.postValue(Resource(Status.SUCCESS, response.body()))
                         } else {
-                            val errorBodyAdapter = Moshi.Builder().build().adapter<ErrorResponse>(ErrorResponse::class.java)
+                            val errorBodyAdapter =
+                                Moshi.Builder().build().adapter<ErrorResponse>(ErrorResponse::class.java)
                             val errorBody = errorBodyAdapter.fromJson(response.errorBody()?.string()!!)
-                            Resource(
-                                Status.ERROR,
-                                response.body(),
-                                errorBody?.error
-                            )
+                            userLiveData.postValue(Resource(Status.ERROR, response.body(), errorBody?.error))
                         }
                     }
 
                     override fun onComplete() {
-                        userLiveData.postValue(userResource)
                     }
                 })
         )
