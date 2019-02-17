@@ -3,6 +3,8 @@ package io.keyu.urekalite.service
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import android.content.Intent
+import io.keyu.urekalite.view.LoginActivity
 
 object SharedPreferenceService {
     private const val UREKA_EMAIL = "username"
@@ -31,5 +33,16 @@ object SharedPreferenceService {
 
     fun isLoggedIn(ctx: Context): Boolean {
         return getSharedPreferences(ctx).getBoolean(UREKA_IS_LOGGEDIN, false)
+    }
+
+    fun logoutUser(ctx: Context) {
+        // Clear all data from Shared Preferences
+        val editor = getSharedPreferences(ctx).edit().clear()
+        editor.apply()
+
+        // After logout redirect user to Login Activity
+        val i = Intent(ctx, LoginActivity::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP and Intent.FLAG_ACTIVITY_NEW_TASK)
+        ctx.startActivity(i)
     }
 }
