@@ -19,12 +19,13 @@ interface UserDataService {
 
     companion object {
 
+        // for Logging
         private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            this.level = HttpLoggingInterceptor.Level.BODY
+            level = HttpLoggingInterceptor.Level.BODY
         }
 
         private val client: OkHttpClient = OkHttpClient.Builder().apply {
-            this.addInterceptor(interceptor)
+            addInterceptor(interceptor)
         }.build()
 
         val retrofit: UserDataService = Retrofit.Builder()

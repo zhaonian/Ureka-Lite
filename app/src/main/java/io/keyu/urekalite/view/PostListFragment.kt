@@ -22,7 +22,7 @@ class PostListFragment : Fragment() {
     private lateinit var postListViewModel: PostListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView = inflater.inflate(R.layout.view_post_list, container, false)
+        val rootView = inflater.inflate(R.layout.view_post_list, container, false)
         recyclerView = rootView.findViewById(R.id.postRecyclerView)
         postListViewModel = ViewModelProviders.of(this).get(PostListViewModel::class.java)
         getPostList()
