@@ -1,6 +1,7 @@
 package io.keyu.urekalite.model
 
 import androidx.lifecycle.MutableLiveData
+import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.service.PostDataService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

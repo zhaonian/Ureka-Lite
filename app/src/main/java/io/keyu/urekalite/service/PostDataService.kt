@@ -1,7 +1,7 @@
 package io.keyu.urekalite.service
 
 import io.keyu.urekalite.UrekaLiteApplication
-import io.keyu.urekalite.model.Post
+import io.keyu.urekalite.model.post.Post
 import io.reactivex.Observable
 import okhttp3.Interceptor
 import retrofit2.Retrofit

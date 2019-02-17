@@ -38,7 +38,10 @@ object SharedPreferenceService {
 
     fun logoutUser(ctx: Context) {
         // Clear all data from Shared Preferences
-        val editor = getSharedPreferences(ctx).edit().clear()
+        val editor = getSharedPreferences(ctx).edit()
+        editor.putBoolean(UREKA_IS_LOGGEDIN, false)
+        editor.putString(UREKA_TOKEN, "")
+        editor.putString(UREKA_EMAIL, "")
         editor.apply()
 
         // After logout redirect user to Login Activity
