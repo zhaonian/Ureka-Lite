@@ -1,18 +1,19 @@
 package io.keyu.urekalite.service
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import android.content.Intent
 import io.keyu.urekalite.view.LoginActivity
 
 object SharedPreferenceService {
+    private const val UREKA_USER = "ureka"
     private const val UREKA_EMAIL = "username"
     private const val UREKA_TOKEN = "password"
     private const val UREKA_IS_LOGGEDIN = "loggedIn"
 
     private fun getSharedPreferences(ctx: Context): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(ctx)
+        return ctx.getSharedPreferences(UREKA_USER, MODE_PRIVATE)
     }
 
     fun setLoginEmail(ctx: Context, email: String, token: String) {
