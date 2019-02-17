@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.activity_login.loginLayout
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 import io.keyu.urekalite.model.Status
+import io.keyu.urekalite.service.SharedPreferenceService
 
 class LoginActivity : AppCompatActivity() {
 
@@ -132,6 +133,11 @@ class LoginActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         startActivity(Intent(this, HomeActivity::class.java))
                         loginLoader.visibility = View.GONE
+                        SharedPreferenceService.setLoginEmail(
+                            this,
+                            emailTextView.text.toString(),
+                            resource.data?.authToken ?: ""
+                        )
                         this.finish()
                     }
                     Status.ERROR -> {
