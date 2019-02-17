@@ -114,6 +114,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             R.id.nav_terms -> {
+                val intent = Intent(this, TermsWebViewActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_settings -> {
             }
