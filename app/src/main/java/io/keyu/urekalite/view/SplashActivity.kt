@@ -13,7 +13,6 @@ class SplashActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
-//        val user = UserDb.getCurrentUser()
         routeToAppropriatePage()
         finish()
     }

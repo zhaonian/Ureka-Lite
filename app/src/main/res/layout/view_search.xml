@@ -25,6 +25,6 @@
             app:lottie_enableMergePathsForKitKatAndAbove="true"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_fileName="lottie_book.json"/>
+            app:lottie_rawRes="@raw/lottie_book"/>
 
 </LinearLayout>
