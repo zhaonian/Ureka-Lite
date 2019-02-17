@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.keyu.urekalite.R
+import io.keyu.urekalite.service.SharedPreferenceService
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
@@ -109,18 +110,30 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
+            R.id.nav_upgrade -> {
                 // Handle the camera action
             }
-            R.id.nav_gallery -> {
+            R.id.nav_terms -> {
+                val intent = Intent(this, TermsWebViewActivity::class.java)
+                startActivity(intent)
             }
-            R.id.nav_slideshow -> {
-            }
-            R.id.nav_manage -> {
+            R.id.nav_settings -> {
             }
             R.id.nav_share -> {
+                val shareIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Discover Science on Ureka at: https://play.google.com/store/apps/details?id=com.urekascience.ureka"
+                    )
+                }
+                startActivity(shareIntent)
             }
             R.id.nav_send -> {
+            }
+            R.id.nav_logout -> {
+                SharedPreferenceService.logoutUser(this)
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
