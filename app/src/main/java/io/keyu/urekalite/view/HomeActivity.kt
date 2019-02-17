@@ -119,6 +119,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_manage -> {
             }
             R.id.nav_share -> {
+                val shareIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Discover Science on Ureka at: https://play.google.com/store/apps/details?id=com.urekascience.ureka"
+                    )
+                }
+                startActivity(shareIntent)
             }
             R.id.nav_send -> {
             }
