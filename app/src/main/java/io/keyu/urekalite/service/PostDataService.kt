@@ -18,8 +18,8 @@ interface PostDataService {
 
     @GET(".")
     fun getPosts(
-        @Query(value = "offset") offset: Long = 0,
-        @Query(value = "limit") limit: Long = 10,
+        @Query(value = "offset") offset: Int = 0,
+        @Query(value = "limit") limit: Int = 10,
         @Query(value = "subscribedOnly") subscribedOnly: Boolean = false
     ): Observable<List<Post>>
 

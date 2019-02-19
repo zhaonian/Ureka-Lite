@@ -6,8 +6,8 @@ data class Content(
     @field:Json(name = "id") val id: Long,
     @field:Json(name = "urekaId") val urekaId: String,
 
-    @field:Json(name = "channelId") val channelId: Long,
-    @field:Json(name = "channelTitle") val channelTitle: String,
+    @field:Json(name = "channelId") val channelId: Long?,
+    @field:Json(name = "channelTitle") val channelTitle: String?,
 
     @field:Json(name = "userId") val userId: Long,
     @field:Json(name = "userName") val userName: String,

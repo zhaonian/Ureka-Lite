@@ -26,7 +26,7 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setPostOwnerRole(curPost.content.role)
             setPostOwnerAvatar(R.mipmap.ic_launcher_round)
             setPostText(curPost.content.text)
-            setPostImage(curPost.content.smallMediaPaths[0])
+            setPostImage(if (curPost.content.smallMediaPaths.isEmpty()) "" else curPost.content.smallMediaPaths[0])
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
         }

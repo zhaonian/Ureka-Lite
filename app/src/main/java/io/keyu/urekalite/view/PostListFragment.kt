@@ -32,7 +32,7 @@ class PostListFragment : Fragment() {
             adapter = postListAdapter
         }
 
-        postListViewModel = ViewModelProviders.of(this).get(PostListViewModel::class.java)
+        postListViewModel = ViewModelProviders.of(activity!!).get(PostListViewModel::class.java)
         getPostList()
 
         swipeLayout = rootView.findViewById(R.id.swipeLayout)
@@ -51,7 +51,6 @@ class PostListFragment : Fragment() {
 
     private fun getPostList() {
         postListViewModel.getPostList().observe(this, Observer<List<Post>> { resource ->
-            //            Log.d("haha", PostListDataSource().postList!![0].content.title)
             postListAdapter.setPostList(resource)
             postListAdapter.notifyDataSetChanged()
         })
