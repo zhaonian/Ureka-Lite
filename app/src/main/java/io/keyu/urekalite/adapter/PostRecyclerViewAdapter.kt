@@ -26,7 +26,10 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setPostOwnerRole(curPost.content.role)
             setPostOwnerAvatar(R.mipmap.ic_launcher_round)
             setPostText(curPost.content.text)
-            setPostImage(if (curPost.content.smallMediaPaths.isEmpty()) "" else curPost.content.smallMediaPaths[0])
+            setPostImage(
+                if (curPost.content.smallMediaPaths.isEmpty()) ""
+                else "http://ec2-52-15-224-200.us-east-2.compute.amazonaws.com:8080/api/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
+            )
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
         }
