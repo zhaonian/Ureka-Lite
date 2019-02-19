@@ -1,9 +1,7 @@
 package io.keyu.urekalite.model
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import io.keyu.urekalite.UrekaLiteApplication.Companion.context
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.service.PostDataService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -35,7 +33,6 @@ class PostListRepository {
                     }
 
                     override fun onNext(post: Post) {
-                        Toast.makeText(context, post.content.title, Toast.LENGTH_LONG).show()
                         postList.add(post)
                     }
 
