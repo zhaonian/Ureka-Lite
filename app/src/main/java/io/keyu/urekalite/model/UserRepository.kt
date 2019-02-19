@@ -1,5 +1,6 @@
 package io.keyu.urekalite.model
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import io.keyu.urekalite.service.UserDataService
 import io.reactivex.Observable
@@ -11,6 +12,8 @@ import retrofit2.Response
 import com.squareup.moshi.Moshi
 
 class UserRepository {
+
+    private val TAG = UserRepository::class.simpleName
 
     private val userLiveData: MutableLiveData<Resource<User>> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
@@ -32,6 +35,7 @@ class UserRepository {
                     override fun onError(e: Throwable) {
                         // Network error
                         userLiveData.value = (Resource(Status.ERROR, null, e.message))
+                        Log.d(TAG, e.message)
                     }
 
                     override fun onNext(response: Response<User>) {

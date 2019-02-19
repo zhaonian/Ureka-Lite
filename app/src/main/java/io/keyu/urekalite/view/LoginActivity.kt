@@ -94,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun isValidEmail(email: CharSequence): Boolean {
-        return (email.isNullOrBlank() || android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        return (email.isBlank() || android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
     }
 
     private fun renderEmailValidationMsg(emailCorrect: Boolean) {
@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun isValidPassword(password: CharSequence): Boolean {
-        return (password.isNullOrBlank() || (password.length in 6..32))
+        return (password.isBlank() || (password.length in 6..32))
     }
 
     private fun renderPasswordValidationMsg(passwordCorrect: Boolean) {

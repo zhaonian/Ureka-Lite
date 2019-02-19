@@ -3,11 +3,13 @@ package io.keyu.urekalite.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.keyu.urekalite.R
-import io.keyu.urekalite.model.Post
+import io.keyu.urekalite.model.post.Post
+import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.view.PostView
 
-class PostRecyclerViewAdapter(private val myDataset: List<Post>) :
-    RecyclerView.Adapter<PostViewHolder>() {
+class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
+
+    private var postList: List<Post> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         // create a new view
@@ -16,19 +18,26 @@ class PostRecyclerViewAdapter(private val myDataset: List<Post>) :
         return PostViewHolder.from(postView)
     }
 
-    override fun getItemCount(): Int = myDataset.size
+    override fun getItemCount(): Int = postList.size
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
+        val curPost = postList[position]
         holder.postView.apply {
-            setPostOwnerDisplayName(myDataset[position].user?.displayName ?: "")
-            setPostOwnerRole(myDataset[position].user?.role ?: "")
+            setPostOwnerDisplayName(curPost.content.userDisplayedName)
+            setPostOwnerRole(curPost.content.role)
             setPostOwnerAvatar(R.mipmap.ic_launcher_round)
-            setPostText(myDataset[position].title)
-            setPostImage(myDataset[position].photo)
-            setLikeState(myDataset[position].liked)
-            setBookmarkState(myDataset[position].bookmarked)
+            setPostText(curPost.content.text)
+            setPostImage(
+                if (curPost.content.smallMediaPaths != null)
+                    "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
+                else ""
+            )
+            setLikeState(curPost.liked)
+            setBookmarkState(curPost.bookmarked)
         }
+    }
+
+    fun setPostList(postList: List<Post>) {
+        this.postList = postList
     }
 }

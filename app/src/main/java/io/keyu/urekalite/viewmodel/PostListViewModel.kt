@@ -2,7 +2,7 @@ package io.keyu.urekalite.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.keyu.urekalite.model.Post
+import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.model.PostListRepository
 
 class PostListViewModel : ViewModel() {
