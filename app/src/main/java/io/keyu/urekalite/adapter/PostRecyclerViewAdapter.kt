@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.keyu.urekalite.R
 import io.keyu.urekalite.model.post.Post
+import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.view.PostView
 
 class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
@@ -28,7 +29,7 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setPostText(curPost.content.text)
             setPostImage(
                 if (curPost.content.smallMediaPaths.isEmpty()) ""
-                else "http://ec2-52-15-224-200.us-east-2.compute.amazonaws.com:8080/api/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
+                else "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
             )
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)

@@ -45,7 +45,7 @@ interface PostDataService {
         }).addInterceptor(interceptor).build()
 
         val retrofit: PostDataService = Retrofit.Builder()
-            .baseUrl("http://ec2-52-15-224-200.us-east-2.compute.amazonaws.com:8080/api/post/")
+            .baseUrl("${Contract.UREKA_AWS}/post/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
