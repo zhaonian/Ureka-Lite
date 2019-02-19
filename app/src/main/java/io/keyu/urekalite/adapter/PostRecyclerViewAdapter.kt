@@ -28,8 +28,9 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setPostOwnerAvatar(R.mipmap.ic_launcher_round)
             setPostText(curPost.content.text)
             setPostImage(
-                if (curPost.content.smallMediaPaths.isEmpty()) ""
-                else "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
+                if (curPost.content.smallMediaPaths != null)
+                    "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
+                else ""
             )
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)

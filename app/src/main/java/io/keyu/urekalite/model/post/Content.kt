@@ -17,7 +17,7 @@ data class Content(
     @field:Json(name = "title") val title: String,
     @field:Json(name = "link") val link: String,
     @field:Json(name = "text") val text: String,
-    @field:Json(name = "smallMediaPaths") val smallMediaPaths: List<String>,
+    @field:Json(name = "smallMediaPaths") val smallMediaPaths: List<String>?,
 
     @field:Json(name = "role") val role: String,
 
