@@ -84,12 +84,12 @@
                     android:layout_marginRight="-15dp"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    app:lottie_fileName="lottie_like.json"/>
+                    app:lottie_rawRes="@raw/lottie_like"/>
             <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/bookmarkLottieView"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:lottie_fileName="lottie_bookmark.json"/>
+                    app:lottie_rawRes="@raw/lottie_bookmark"/>
         </LinearLayout>
     </LinearLayout>
 

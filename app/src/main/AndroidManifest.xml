@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.keyu.urekalite">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:allowBackup="true"
@@ -11,22 +11,21 @@
             android:name=".UrekaLiteApplication"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
+            android:networkSecurityConfig="@xml/network_security_config"
             android:theme="@style/AppTheme">
         <activity
                 android:name=".view.SplashActivity"
                 android:theme="@style/AppTheme.Launcher">
-
-        </activity>
-
-        <activity
-                android:name=".view.LoginActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".view.LoginActivity"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
@@ -45,6 +44,9 @@
         <activity
                 android:name=".view.ProfileActivity"
                 android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".view.TermsWebViewActivity"></activity>
+
     </application>
 
 </manifest>

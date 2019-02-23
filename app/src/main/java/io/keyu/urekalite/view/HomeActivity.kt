@@ -8,11 +8,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.keyu.urekalite.R
+import io.keyu.urekalite.service.SharedPreferenceService
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
+import kotlinx.android.synthetic.main.app_bar_home.toolbarSearch
 import kotlinx.android.synthetic.main.app_bar_home.bottom_navigation
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -52,6 +55,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navHome -> {
+                toolbar.visibility = View.VISIBLE
+                toolbarSearch.visibility = View.GONE
                 var selectedFragment = PostListFragment()
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.homeContentContainer, selectedFragment)
@@ -59,6 +64,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navChannel -> {
+                toolbar.visibility = View.VISIBLE
+                toolbarSearch.visibility = View.GONE
                 var selectedFragment = ChannelListFragment()
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.homeContentContainer, selectedFragment)
@@ -66,6 +73,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navSearch -> {
+                toolbar.visibility = View.GONE
+                toolbarSearch.visibility = View.VISIBLE
                 var selectedFragment = SearchFragment()
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.homeContentContainer, selectedFragment)
@@ -73,9 +82,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navNotification -> {
+                toolbar.visibility = View.VISIBLE
+                toolbarSearch.visibility = View.GONE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navBookmark -> {
+                toolbar.visibility = View.VISIBLE
+                toolbarSearch.visibility = View.GONE
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -109,18 +122,30 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
+            R.id.nav_upgrade -> {
                 // Handle the camera action
             }
-            R.id.nav_gallery -> {
+            R.id.nav_terms -> {
+                val intent = Intent(this, TermsWebViewActivity::class.java)
+                startActivity(intent)
             }
-            R.id.nav_slideshow -> {
-            }
-            R.id.nav_manage -> {
+            R.id.nav_settings -> {
             }
             R.id.nav_share -> {
+                val shareIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Discover Science on Ureka at: https://play.google.com/store/apps/details?id=com.urekascience.ureka"
+                    )
+                }
+                startActivity(shareIntent)
             }
             R.id.nav_send -> {
+            }
+            R.id.nav_logout -> {
+                SharedPreferenceService.logoutUser(this)
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
