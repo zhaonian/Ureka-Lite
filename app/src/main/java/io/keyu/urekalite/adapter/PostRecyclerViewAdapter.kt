@@ -29,7 +29,7 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setPostText(curPost.content.text)
             setPostImage(
                 if (!curPost.content.smallMediaPaths.isNullOrEmpty())
-                    "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Small"
+                    "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Original"
                 else ""
             )
             setLikeState(curPost.liked)
