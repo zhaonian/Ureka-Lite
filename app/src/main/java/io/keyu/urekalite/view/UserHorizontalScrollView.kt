@@ -17,30 +17,17 @@ class UserHorizontalScrollView : HorizontalScrollView {
     ) : super(context, attrs, defStyleAttr)
 
     private val linearLayout: LinearLayout
-    private var userList: List<SearchUser> = listOf(
-        SearchUser(1, ""),
-        SearchUser(2, ""),
-        SearchUser(3, ""),
-        SearchUser(4, ""),
-        SearchUser(5, ""),
-        SearchUser(6, ""),
-        SearchUser(7, ""),
-        SearchUser(8, ""),
-        SearchUser(9, ""),
-        SearchUser(10, "")
-    )
 
     init {
         View.inflate(context, R.layout.view_user_list, this)
         linearLayout = findViewById(R.id.linearLayout)
-        for (user in userList) {
-            var userSmallView = UserSmallView(context)
-            userSmallView.setUserImage("hehe")
-            linearLayout.addView(userSmallView)
-        }
     }
 
     fun setUserSearchList(userList: List<SearchUser>) {
-        this.userList = userList
+        for (user in userList) {
+            var userSmallView = UserSmallView(context)
+            userSmallView.setUserImage(user.avatar)
+            linearLayout.addView(userSmallView)
+        }
     }
 }
