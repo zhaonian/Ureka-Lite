@@ -9,55 +9,7 @@
     <io.keyu.urekalite.view.UserHorizontalScrollView
             android:id="@+id/userSearchList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-    </io.keyu.urekalite.view.UserHorizontalScrollView>
-
-    <!--<HorizontalScrollView-->
-    <!--android:id="@+id/horizontalScrollView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:scrollbars="none"-->
-    <!--android:fillViewport="true">-->
-
-    <!--<LinearLayout-->
-    <!--android:id="@+id/linearLayout"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--<io.keyu.urekalite.view.UserSmallView-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="80dp"/>-->
-    <!--</LinearLayout>-->
-    <!--</HorizontalScrollView>-->
+            android:layout_height="match_parent"/>
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/bookLottieView"
