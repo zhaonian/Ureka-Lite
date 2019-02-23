@@ -2,7 +2,6 @@ package io.keyu.urekalite.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.keyu.urekalite.R
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.view.PostView
@@ -25,7 +24,7 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
         holder.postView.apply {
             setPostOwnerDisplayName(curPost.content.userDisplayedName)
             setPostOwnerRole(curPost.content.role)
-            setPostOwnerAvatar(R.mipmap.ic_launcher_round)
+            setPostOwnerAvatar("${Contract.UREKA_AWS}/avatar/${curPost.content.userAvatar}/downloadMedia?mediaFidelity=Small")
             setPostText(curPost.content.text)
             setPostImage(
                 if (!curPost.content.smallMediaPaths.isNullOrEmpty())

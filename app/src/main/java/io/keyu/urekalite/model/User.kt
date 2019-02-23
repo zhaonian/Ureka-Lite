@@ -3,10 +3,10 @@ package io.keyu.urekalite.model
 import com.squareup.moshi.Json
 
 data class User(
-    @field:Json(name = "id") var id: Long,
+    @field:Json(name = "id") val id: Long,
     @field:Json(name = "username") val username: String,
     var displayName: String,
-    var avatar: String?,
+    @field:Json(name = "avatar") val avatar: String?,
     @field:Json(name = "role") val role: String,
     var orcidVerified: Boolean,
     var bio: String?,
