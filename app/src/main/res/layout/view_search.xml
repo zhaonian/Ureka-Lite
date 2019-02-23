@@ -6,6 +6,51 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+    <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+            <io.keyu.urekalite.view.UserSmallView
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/bookLottieView"
             android:layout_width="match_parent"
@@ -14,5 +59,6 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/lottie_book"/>
+
 
 </LinearLayout>

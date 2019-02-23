@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="1dp">
 
-</LinearLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/userSmallImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            fresco:viewAspectRatio="1"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@drawable/science"
+            app:actualImageResource="@drawable/science"
+            app:roundAsCircle="true"
+            app:roundingBorderWidth="2dp"
+            app:roundingBorderColor="@color/colorAccent"
+    />
+
+</com.google.android.material.card.MaterialCardView>
