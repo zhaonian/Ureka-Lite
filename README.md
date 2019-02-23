@@ -19,8 +19,8 @@
 
 * Google Material Design Component Library: https://material.io/develop/android/components/material-card-view/
 
-* Semantic Versioning: https://medium.com/@maxirosson/versioning-android-apps-d6ec171cfd82
-
 * Espresso test framework: https://developer.android.com/training/testing/espresso 
 
 * ktlint: https://github.com/shyiko/ktlint
+
+* Semantic Versioning: https://medium.com/@maxirosson/versioning-android-apps-d6ec171cfd82
