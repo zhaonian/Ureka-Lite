@@ -5,10 +5,12 @@
 
 * reactivex RxKotlin RxAndroid operators: https://github.com/ReactiveX/RxKotlin
 
-* Square Retrofit for networking: https://square.github.io/retrofit/
+* Square Retrofit: https://square.github.io/retrofit/
 
-* Facebook fresco for images: https://frescolib.org/ 
+* Facebook fresco: https://frescolib.org/ 
 
 * Airbnb Lottie: https://www.lottiefiles.com/
 
 * Google Material Design Component Library: https://material.io/develop/android/components/material-card-view/
+
+* Semantic Versioning: https://medium.com/@maxirosson/versioning-android-apps-d6ec171cfd82
