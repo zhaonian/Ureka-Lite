@@ -18,7 +18,7 @@ class UserRepository {
     private val userLiveData: MutableLiveData<Resource<User>> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    fun getUserLiveData(user: UserLoginRequest): MutableLiveData<Resource<User>> {
+    fun getUserLiveDataFromLogin(user: UserLoginRequest): MutableLiveData<Resource<User>> {
         val retrofitInstance: UserDataService = UserDataService.retrofit
         val userObservable: Observable<Response<User>> = retrofitInstance.loginUser(user)
         compositeDisposable.add(
@@ -53,6 +53,10 @@ class UserRepository {
                     }
                 })
         )
+        return userLiveData
+    }
+
+    fun getUserLiveData(): MutableLiveData<Resource<User>> {
         return userLiveData
     }
 

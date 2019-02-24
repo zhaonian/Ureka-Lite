@@ -131,13 +131,18 @@ class LoginActivity : AppCompatActivity() {
                         loginLoader.visibility = View.VISIBLE
                     }
                     Status.SUCCESS -> {
-                        startActivity(Intent(this, HomeActivity::class.java))
                         loginLoader.visibility = View.GONE
-                        SharedPreferenceService.setLoginEmail(
+                        SharedPreferenceService.setUserInfo(
                             this,
                             emailTextView.text.toString(),
-                            resource.data?.authToken ?: ""
+                            resource.data?.authToken ?: "",
+                            resource.data?.username ?: "Ureka",
+                            resource.data?.fullname ?: "Ureka User",
+                            resource.data?.avatar ?: "",
+                            resource.data?.occupation ?: "Ureka Engineer",
+                            resource.data?.role ?: "UREKA User"
                         )
+                        startActivity(Intent(this, HomeActivity::class.java))
                         this.finish()
                     }
                     Status.ERROR -> {

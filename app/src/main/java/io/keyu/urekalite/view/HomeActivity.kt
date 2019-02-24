@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.keyu.urekalite.R
+import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.service.SharedPreferenceService
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.app_bar_home.toolbarSearch
 import kotlinx.android.synthetic.main.app_bar_home.bottom_navigation
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val TAG = HomeActivity::class.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +38,24 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        bottom_navigation.selectedItemId = R.id.navHome
+
         top_navigation.setNavigationItemSelectedListener(this)
         val headerView = top_navigation.getHeaderView(0).apply {
-            findViewById<SimpleDraweeView>(R.id.avatar).setImageURI("")
-            findViewById<TextView>(R.id.username).text = "hehe"
-            findViewById<TextView>(R.id.role).text = "haha"
-            findViewById<SimpleDraweeView>(R.id.avatar)
+            findViewById<SimpleDraweeView>(R.id.avatar).setImageURI(
+                "${Contract.UREKA_AWS}/avatar/${SharedPreferenceService.getAvatar(context)}/downloadMedia?mediaFidelity=Small"
+            )
+            findViewById<TextView>(R.id.userDisplayedName).text =
+                SharedPreferenceService.getDisplayedName(context)
+            findViewById<TextView>(R.id.role).text =
+                SharedPreferenceService.getOccupation(context)
         }
         headerView.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             drawer_layout.closeDrawer(GravityCompat.START)
         }
-
-        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        bottom_navigation.selectedItemId = R.id.navHome
     }
 
     override fun onResume() {

@@ -15,14 +15,15 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:roundAsCircle="true"
             app:placeholderImage="@mipmap/ic_launcher_round"
             android:contentDescription="@string/nav_header_desc"/>
 
     <TextView
-            android:id="@+id/username"
+            android:id="@+id/userDisplayedName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
