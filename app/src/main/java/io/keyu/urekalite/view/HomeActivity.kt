@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.keyu.urekalite.R
 import io.keyu.urekalite.service.SharedPreferenceService
@@ -34,7 +36,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         top_navigation.setNavigationItemSelectedListener(this)
-        top_navigation.getHeaderView(0).setOnClickListener {
+        val headerView = top_navigation.getHeaderView(0).apply {
+            findViewById<SimpleDraweeView>(R.id.avatar).setImageURI("")
+            findViewById<TextView>(R.id.username).text = "hehe"
+            findViewById<TextView>(R.id.role).text = "haha"
+            findViewById<SimpleDraweeView>(R.id.avatar)
+        }
+        headerView.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             drawer_layout.closeDrawer(GravityCompat.START)
