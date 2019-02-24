@@ -12,7 +12,11 @@ class UserViewModel : ViewModel() {
     private val userRepository: UserRepository = UserRepository()
 
     fun loginUser(user: UserLoginRequest): MutableLiveData<Resource<User>> {
-        return userRepository.getUserLiveData(user)
+        return userRepository.getUserLiveDataFromLogin(user)
+    }
+
+    fun getUserLiveData(): MutableLiveData<Resource<User>> {
+        return userRepository.getUserLiveData()
     }
 
     fun clear() {

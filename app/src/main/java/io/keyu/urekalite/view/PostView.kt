@@ -1,13 +1,11 @@
 package io.keyu.urekalite.view
 
 import android.content.Context
-import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.DrawableRes
 import com.airbnb.lottie.LottieAnimationView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.card.MaterialCardView
 import io.keyu.urekalite.R
 
@@ -20,9 +18,9 @@ class PostView : MaterialCardView {
     ) : super(context, attrs, defStyleAttr)
 
     private val postOwnerDisplayName: TextView
-    private val postOwnerAvatar: ImageView
+    private val postOwnerAvatar: SimpleDraweeView
     private val postOwnerRole: TextView
-    private val postImage: ImageView
+    private val postImage: SimpleDraweeView
     private val postText: TextView
     private val likeLottieView: LottieAnimationView
     private val bookmarkLottieView: LottieAnimationView
@@ -46,8 +44,8 @@ class PostView : MaterialCardView {
         }
     }
 
-    fun setPostOwnerAvatar(@DrawableRes res: Int) {
-        postOwnerAvatar.setImageResource(res)
+    fun setPostOwnerAvatar(uri: String) {
+        postOwnerAvatar.setImageURI(uri)
     }
 
     fun setPostOwnerDisplayName(displayName: String) {
@@ -58,12 +56,8 @@ class PostView : MaterialCardView {
         postOwnerRole.text = role
     }
 
-    fun setPostImage(@DrawableRes res: Int) {
-        postImage.setImageResource(res)
-    }
-
     fun setPostImage(uri: String) {
-        postImage.setImageURI(Uri.parse(uri))
+        postImage.setImageURI(uri)
     }
 
     fun setPostText(text: String) {
