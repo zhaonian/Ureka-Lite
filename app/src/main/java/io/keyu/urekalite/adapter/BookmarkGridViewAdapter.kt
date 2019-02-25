@@ -16,8 +16,10 @@ class BookmarkGridViewAdapter(private val itemList: List<Post>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
-        holder.bookName.text = itemList[position].content.text
-        holder.authorName.text = itemList[position].content.title
+        holder.postTitle.text = itemList[position].content.title
+        holder.postImage.setImageURI("hehe")
+        holder.postAuthor.text = itemList[position].content.userDisplayedName
+        holder.postText.text = itemList[position].content.text
     }
 
     override fun getItemCount(): Int {
