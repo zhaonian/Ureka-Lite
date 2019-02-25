@@ -8,13 +8,11 @@ import android.widget.LinearLayout
 import io.keyu.urekalite.R
 import io.keyu.urekalite.model.SearchUser
 
-class UserHorizontalScrollView : HorizontalScrollView {
-    @JvmOverloads
-    constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : super(context, attrs, defStyleAttr)
+class UserHorizontalScrollView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : HorizontalScrollView(context, attrs, defStyleAttr) {
 
     private val linearLayout: LinearLayout
 
