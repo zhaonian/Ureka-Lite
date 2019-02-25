@@ -23,7 +23,7 @@ class UserHorizontalScrollView @JvmOverloads constructor(
 
     fun setUserSearchList(userList: List<SearchUser>) {
         for (user in userList) {
-            var userSmallView = UserSmallView(context)
+            val userSmallView = UserSmallView(context)
             userSmallView.setUserImage(user.avatar)
             linearLayout.addView(userSmallView)
         }
