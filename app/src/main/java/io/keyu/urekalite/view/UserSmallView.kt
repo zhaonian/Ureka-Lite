@@ -7,13 +7,8 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.card.MaterialCardView
 import io.keyu.urekalite.R
 
-class UserSmallView : MaterialCardView {
-    @JvmOverloads
-    constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : super(context, attrs, defStyleAttr)
+class UserSmallView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+    MaterialCardView(context, attrs, defStyleAttr) {
 
     private val userImage: SimpleDraweeView
 

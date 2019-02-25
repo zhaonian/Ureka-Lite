@@ -17,11 +17,9 @@
             android:layout_gravity="center"
             fresco:viewAspectRatio="1"
             fresco:actualImageScaleType="centerCrop"
-            fresco:placeholderImage="@drawable/science"
-            app:actualImageResource="@drawable/science"
+            fresco:placeholderImage="@drawable/ic_launcher_foreground"
             app:roundAsCircle="true"
             app:roundingBorderWidth="2dp"
-            app:roundingBorderColor="@color/colorAccent"
-    />
+            app:roundingBorderColor="@color/colorAccent"/>
 
 </com.google.android.material.card.MaterialCardView>
