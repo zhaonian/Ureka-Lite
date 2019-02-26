@@ -1,5 +1,6 @@
 package io.keyu.urekalite.adapter
 
+import android.content.Context
 import android.graphics.Typeface
 import android.widget.Toast
 import android.view.View
@@ -7,8 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import io.keyu.urekalite.R
+import android.app.AlertDialog
 
-class BookmarkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+class BookmarkViewHolder(private val context: Context, itemView: View) :
+    RecyclerView.ViewHolder(itemView),
+    View.OnClickListener,
+    View.OnLongClickListener {
 
     val postTitle: TextView
     val postImage: SimpleDraweeView
@@ -17,6 +22,8 @@ class BookmarkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Vi
 
     init {
         itemView.setOnClickListener(this)
+        itemView.setOnLongClickListener(this)
+
         postTitle = itemView.findViewById(R.id.postTitle)
         postTitle.setTypeface(null, Typeface.BOLD)
 
@@ -33,5 +40,16 @@ class BookmarkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Vi
             view.context,
             "Clicked Position = $layoutPosition", Toast.LENGTH_SHORT
         ).show()
+    }
+
+    override fun onLongClick(view: View): Boolean {
+
+        val alertDialog = AlertDialog.Builder(context).create()
+        alertDialog.setTitle("Reset...")
+        alertDialog.setMessage("R u sure?")
+        alertDialog.window?.attributes?.windowAnimations = R.style.PostPreviewAnimation
+        alertDialog.show()
+
+        return true
     }
 }

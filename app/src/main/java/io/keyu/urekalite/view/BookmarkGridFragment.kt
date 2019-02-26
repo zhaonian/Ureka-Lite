@@ -26,7 +26,7 @@ class BookmarkGridFragment : Fragment() {
         staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         staggeredGridView.layoutManager = staggeredGridLayoutManager
 
-        bookmarkGridViewAdapter = BookmarkGridViewAdapter(PostListDataSource().postList!!) // TODO: replace dummy data
+        bookmarkGridViewAdapter = BookmarkGridViewAdapter(context!!, PostListDataSource().postList!!) // TODO: replace dummy data
         staggeredGridView.adapter = bookmarkGridViewAdapter
 
         return rootView
