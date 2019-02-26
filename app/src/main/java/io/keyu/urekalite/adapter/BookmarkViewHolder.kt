@@ -13,8 +13,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 
 class BookmarkViewHolder(
-    private val context: Context,
-    private val layoutInflater: LayoutInflater,
+    context: Context,
+    layoutInflater: LayoutInflater,
     itemView: View
 ) :
     RecyclerView.ViewHolder(itemView),
