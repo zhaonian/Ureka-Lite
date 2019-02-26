@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import io.keyu.urekalite.R
 import android.app.AlertDialog
-import android.util.Log
 import android.view.MotionEvent
 
 class BookmarkViewHolder(private val context: Context, itemView: View) :
@@ -23,7 +22,7 @@ class BookmarkViewHolder(private val context: Context, itemView: View) :
     val postAuthor: TextView
     val postText: TextView
 
-    private lateinit var alertDialog: AlertDialog
+    private lateinit var postPreviewWindow: AlertDialog
     private var isLongPressed = false
 
     init {
@@ -43,8 +42,6 @@ class BookmarkViewHolder(private val context: Context, itemView: View) :
     }
 
     override fun onClick(view: View) {
-        Log.d("short", "cao!")
-
         Toast.makeText(
             view.context,
             "Clicked Position = $layoutPosition", Toast.LENGTH_SHORT
@@ -52,13 +49,12 @@ class BookmarkViewHolder(private val context: Context, itemView: View) :
     }
 
     override fun onLongClick(view: View): Boolean {
-        Log.d("long", "cao!")
         isLongPressed = true
-        alertDialog = AlertDialog.Builder(context).create()
-        alertDialog.setTitle("Reset...")
-        alertDialog.setMessage("R u sure?")
-        alertDialog.window?.attributes?.windowAnimations = R.style.PostPreviewAnimation
-        alertDialog.show()
+        postPreviewWindow = AlertDialog.Builder(context).create()
+        postPreviewWindow.setTitle("Reset...")
+        postPreviewWindow.setMessage("R u sure?")
+        postPreviewWindow.window?.attributes?.windowAnimations = R.style.PostPreviewAnimation
+        postPreviewWindow.show()
 
         return true
     }
@@ -66,9 +62,8 @@ class BookmarkViewHolder(private val context: Context, itemView: View) :
     override fun onTouch(view: View?, event: MotionEvent?): Boolean {
         view?.onTouchEvent(event)
         if (event?.action == MotionEvent.ACTION_UP && isLongPressed) {
-            Log.d("touch", "cao!")
             isLongPressed = false
-            alertDialog.dismiss()
+            postPreviewWindow.dismiss()
         }
         return true
     }
