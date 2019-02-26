@@ -12,7 +12,11 @@ import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.MotionEvent
 
-class BookmarkViewHolder(private val context: Context, private val layoutInflater: LayoutInflater, itemView: View) :
+class BookmarkViewHolder(
+    private val context: Context,
+    private val layoutInflater: LayoutInflater,
+    itemView: View
+) :
     RecyclerView.ViewHolder(itemView),
     View.OnClickListener,
     View.OnLongClickListener,
@@ -23,8 +27,8 @@ class BookmarkViewHolder(private val context: Context, private val layoutInflate
     val postAuthor: TextView
     val postText: TextView
 
-    private var postPreview: View = layoutInflater.inflate(R.layout.view_post_preview_dialog, null)
-    private lateinit var postPreviewWindow: AlertDialog
+    private var postPreview: View = layoutInflater.inflate(R.layout.view_post_preview_dialog, null, false)
+    private val postPreviewWindow = AlertDialog.Builder(context).setView(postPreview).create()
     private var isLongPressed = false
 
     init {
@@ -50,7 +54,7 @@ class BookmarkViewHolder(private val context: Context, private val layoutInflate
         ).show()
     }
 
-    override fun onLongClick(view: View): Boolean {
+    override fun onLongClick(view: View?): Boolean {
 
         postPreview.findViewById<TextView>(R.id.postTitle).text = postTitle.text
         postPreview.findViewById<TextView>(R.id.postText).text = postText.text
@@ -60,11 +64,9 @@ class BookmarkViewHolder(private val context: Context, private val layoutInflate
         // TODO: image quality in the small Bookmark view should be medium / small
 
         isLongPressed = true
-        postPreviewWindow = AlertDialog.Builder(context).setView(postPreview).create()
         postPreviewWindow.window?.decorView?.background?.alpha = 0
         postPreviewWindow.window?.attributes?.windowAnimations = R.style.PostPreviewAnimation
         postPreviewWindow.show()
-
         return true
     }
 
