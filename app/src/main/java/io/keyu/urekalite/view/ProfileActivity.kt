@@ -3,8 +3,6 @@ package io.keyu.urekalite.view
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile.toolbar
 import com.google.android.material.appbar.AppBarLayout
@@ -49,23 +47,5 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_profile, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        // no inspection SimplifiableIfStatement
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
     }
 }

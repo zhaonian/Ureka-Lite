@@ -29,7 +29,7 @@ interface UserDataService {
         }.build()
 
         val retrofit: UserDataService = Retrofit.Builder()
-            .baseUrl("${Contract.UREKA_AWS}/api/users/")
+            .baseUrl("${Contract.UREKA_AWS}/users/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
