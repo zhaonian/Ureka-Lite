@@ -36,5 +36,6 @@ class MediaListViewPagerAdapter(private val context: Context) : PagerAdapter() {
 
     fun setMediaList(media: List<String>) {
         mediaList = media
+        notifyDataSetChanged()
     }
 }
