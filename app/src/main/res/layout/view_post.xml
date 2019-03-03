@@ -54,22 +54,10 @@
             </LinearLayout>
         </LinearLayout>
 
-        <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/postImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                fresco:viewAspectRatio="1"
-                fresco:actualImageScaleType="centerCrop"
-                fresco:placeholderImage="@drawable/science"
-                android:background="#000000"/>
-
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
-
-        </androidx.viewpager.widget.ViewPager>
+                android:layout_height="400dp"/>
 
         <TextView
                 android:id="@+id/postText"

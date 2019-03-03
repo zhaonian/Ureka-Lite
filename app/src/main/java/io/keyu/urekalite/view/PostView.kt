@@ -10,7 +10,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.card.MaterialCardView
 import io.keyu.urekalite.R
 import io.keyu.urekalite.adapter.MediaListViewPagerAdapter
-import io.keyu.urekalite.service.ZoomOutPageTransformer
+import io.keyu.urekalite.adapter.ZoomOutPageTransformer
 
 class PostView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     MaterialCardView(context, attrs, defStyleAttr) {
@@ -18,7 +18,6 @@ class PostView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     private val postOwnerDisplayName: TextView
     private val postOwnerAvatar: SimpleDraweeView
     private val postOwnerRole: TextView
-    private val postImage: SimpleDraweeView
     private val postMediaList: ViewPager
     private val postText: TextView
     private val likeLottieView: LottieAnimationView
@@ -30,7 +29,6 @@ class PostView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         postOwnerDisplayName = findViewById(R.id.postOwnerDisplayName)
         postOwnerAvatar = findViewById(R.id.postOwnerAvatar)
         postOwnerRole = findViewById(R.id.postOwnerRole)
-        postImage = findViewById(R.id.postImage)
         postMediaList = findViewById(R.id.viewPager)
         postMediaList.adapter = pagerAdapter
         postMediaList.setPageTransformer(true, ZoomOutPageTransformer())
@@ -47,8 +45,8 @@ class PostView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         }
     }
 
-    fun setColors(colors: IntArray) {
-        (postMediaList.adapter as MediaListViewPagerAdapter).setColorArray(colors)
+    fun setMediaList(mediaList: List<String>) {
+        pagerAdapter.setMediaList(mediaList)
     }
 
     fun setPostOwnerAvatar(uri: String) {
@@ -61,10 +59,6 @@ class PostView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
 
     fun setPostOwnerRole(role: String) {
         postOwnerRole.text = role
-    }
-
-    fun setPostImage(uri: String) {
-        postImage.setImageURI(uri)
     }
 
     fun setPostText(text: String) {

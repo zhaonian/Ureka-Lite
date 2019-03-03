@@ -1,4 +1,4 @@
-package io.keyu.urekalite.service
+package io.keyu.urekalite.adapter
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager
