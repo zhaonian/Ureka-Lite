@@ -1,5 +1,6 @@
 package io.keyu.urekalite.adapter
 
+import android.graphics.Color
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.keyu.urekalite.model.post.Post
@@ -24,6 +25,14 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
         holder.postView.apply {
             setPostOwnerDisplayName(curPost.content.userDisplayedName)
             setPostOwnerRole(curPost.content.role)
+            setColors(
+                intArrayOf(
+                    Color.rgb(239, 85, 85),
+                    Color.rgb(239, 85, 85),
+                    Color.rgb(110, 49, 89),
+                    Color.rgb(1, 188, 212)
+                )
+            )
             setPostOwnerAvatar("${Contract.UREKA_AWS}/avatar/${curPost.content.userAvatar}/downloadMedia?mediaFidelity=Small")
             setPostText(curPost.content.text)
             setPostImage(

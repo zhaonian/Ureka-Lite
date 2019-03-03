@@ -4,26 +4,26 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
+import androidx.viewpager.widget.ViewPager
 import com.airbnb.lottie.LottieAnimationView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.card.MaterialCardView
 import io.keyu.urekalite.R
+import io.keyu.urekalite.adapter.MediaListViewPagerAdapter
+import io.keyu.urekalite.service.ZoomOutPageTransformer
 
-class PostView : MaterialCardView {
-    @JvmOverloads
-    constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : super(context, attrs, defStyleAttr)
+class PostView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+    MaterialCardView(context, attrs, defStyleAttr) {
 
     private val postOwnerDisplayName: TextView
     private val postOwnerAvatar: SimpleDraweeView
     private val postOwnerRole: TextView
     private val postImage: SimpleDraweeView
+    private val postMediaList: ViewPager
     private val postText: TextView
     private val likeLottieView: LottieAnimationView
     private val bookmarkLottieView: LottieAnimationView
+    private val pagerAdapter = MediaListViewPagerAdapter(context)
 
     init {
         View.inflate(context, R.layout.view_post, this) // inflate first before set below attrs, otherwise NPE
@@ -31,6 +31,9 @@ class PostView : MaterialCardView {
         postOwnerAvatar = findViewById(R.id.postOwnerAvatar)
         postOwnerRole = findViewById(R.id.postOwnerRole)
         postImage = findViewById(R.id.postImage)
+        postMediaList = findViewById(R.id.viewPager)
+        postMediaList.adapter = pagerAdapter
+        postMediaList.setPageTransformer(true, ZoomOutPageTransformer())
         postText = findViewById(R.id.postText)
         likeLottieView = findViewById(R.id.likeLottieView)
         bookmarkLottieView = findViewById(R.id.bookmarkLottieView)
@@ -42,6 +45,10 @@ class PostView : MaterialCardView {
         bookmarkLottieView.setOnClickListener {
             bookmarkPost()
         }
+    }
+
+    fun setColors(colors: IntArray) {
+        (postMediaList.adapter as MediaListViewPagerAdapter).setColorArray(colors)
     }
 
     fun setPostOwnerAvatar(uri: String) {

@@ -63,6 +63,14 @@
                 fresco:actualImageScaleType="centerCrop"
                 fresco:placeholderImage="@drawable/science"
                 android:background="#000000"/>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+        </androidx.viewpager.widget.ViewPager>
+
         <TextView
                 android:id="@+id/postText"
                 android:layout_width="match_parent"
