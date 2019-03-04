@@ -11,7 +11,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 
 class MediaListViewPagerAdapter(private val context: Context) : PagerAdapter() {
 
-    private var mediaList = listOf("COSMONAUT", "SATELITE", "GALAXY", "ROCKET")
+    private var mediaList = emptyList<String>()
 
     override fun getCount(): Int {
         return mediaList.size
