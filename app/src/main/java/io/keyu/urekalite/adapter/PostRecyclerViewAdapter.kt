@@ -24,13 +24,14 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
         holder.postView.apply {
             setPostOwnerDisplayName(curPost.content.userDisplayedName)
             setPostOwnerRole(curPost.content.role)
+            setMediaList(
+                if (curPost.content.smallMediaPaths.isNullOrEmpty()) emptyList()
+                else curPost.content.smallMediaPaths.map { mediaPath ->
+                    "${Contract.UREKA_AWS}/post/$mediaPath/downloadMedia?mediaFidelity=Medium"
+                }
+            )
             setPostOwnerAvatar("${Contract.UREKA_AWS}/avatar/${curPost.content.userAvatar}/downloadMedia?mediaFidelity=Small")
             setPostText(curPost.content.text)
-            setPostImage(
-                if (!curPost.content.smallMediaPaths.isNullOrEmpty())
-                    "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Original"
-                else ""
-            )
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
         }
@@ -38,5 +39,6 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
     fun setPostList(postList: List<Post>) {
         this.postList = postList
+        notifyDataSetChanged()
     }
 }
