@@ -37,8 +37,8 @@
                 android:adjustViewBounds="true"
                 fresco:viewAspectRatio="1"
                 fresco:actualImageScaleType="fitXY"
-                fresco:failureImage="@drawable/science"
-                android:background="#000000"/>
+                fresco:failureImage="@drawable/ic_failure_image"
+                android:background="#b2dfdb"/>
 
         <TextView
                 android:id="@+id/postText"
