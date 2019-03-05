@@ -1,10 +1,14 @@
 package io.keyu.urekalite.adapter
 
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import io.keyu.urekalite.UrekaLiteApplication.Companion.context
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.view.PostView
+import io.keyu.urekalite.view.ProfileActivity
 
 class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
@@ -34,6 +38,12 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setPostText(curPost.content.text)
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
+        }
+        holder.postView.setOnClickListener {
+            val intent = Intent(context, ProfileActivity::class.java)
+            intent.putExtra("PostData", curPost)
+            intent.flags = FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
         }
     }
 
