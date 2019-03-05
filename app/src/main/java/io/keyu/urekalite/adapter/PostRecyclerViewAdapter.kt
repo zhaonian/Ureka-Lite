@@ -8,7 +8,7 @@ import io.keyu.urekalite.UrekaLiteApplication.Companion.context
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.view.PostView
-import io.keyu.urekalite.view.ProfileActivity
+import io.keyu.urekalite.view.SinglePostActivity
 
 class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
@@ -39,8 +39,8 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
         }
-        holder.postView.setOnClickListener {
-            val intent = Intent(context, ProfileActivity::class.java)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, SinglePostActivity::class.java)
             intent.putExtra("PostData", curPost)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
