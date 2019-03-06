@@ -14,10 +14,10 @@ import io.keyu.urekalite.service.SharedPreferenceService
 
 class OnboardingActivity : FragmentActivity() {
 
-    private var pager: ViewPager? = null
-    private var indicator: SmartTabLayout? = null
-    private var skip: MaterialButton? = null
-    private var next: MaterialButton? = null
+    private lateinit var pager: ViewPager
+    private lateinit var indicator: SmartTabLayout
+    private lateinit var skip: MaterialButton
+    private lateinit var next: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,33 +43,31 @@ class OnboardingActivity : FragmentActivity() {
                 return 3
             }
         }
+        pager.adapter = adapter
 
-        pager!!.adapter = adapter
-
-        indicator!!.setViewPager(pager)
-
-        indicator!!.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
+        indicator.setViewPager(pager)
+        indicator.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
 
             override fun onPageSelected(position: Int) {
                 if (position == 2) {
-                    skip!!.visibility = View.GONE
-                    next!!.text = "Done"
+                    skip.visibility = View.GONE
+                    next.text = "Done"
                 } else {
-                    skip!!.visibility = View.VISIBLE
-                    next!!.text = "Next"
+                    skip.visibility = View.VISIBLE
+                    next.text = "Next"
                 }
             }
         })
 
-        skip!!.setOnClickListener(View.OnClickListener { finishOnboarding() })
+        skip.setOnClickListener { finishOnboarding() }
 
-        next!!.setOnClickListener(View.OnClickListener {
-            if (pager!!.currentItem == 2) {
+        next.setOnClickListener {
+            if (pager.currentItem == 2) {
                 finishOnboarding()
             } else {
-                pager!!.setCurrentItem(pager!!.currentItem + 1, true)
+                pager.setCurrentItem(pager.currentItem + 1, true)
             }
-        })
+        }
     }
 
     private fun finishOnboarding() {
