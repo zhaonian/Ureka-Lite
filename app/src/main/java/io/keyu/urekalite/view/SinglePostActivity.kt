@@ -31,7 +31,7 @@ class SinglePostActivity : AppCompatActivity() {
             Toast.makeText(this, "share", Toast.LENGTH_LONG).show()
         }
 
-        nestedScrollView.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+        nestedScrollView.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, oldScrollY: Int ->
             // Scroll Down
             if (scrollY > oldScrollY) {
                 window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
