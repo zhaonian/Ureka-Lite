@@ -25,5 +25,8 @@ class SinglePostActivity : AppCompatActivity() {
         link.setOnClickListener {
             Toast.makeText(this, "link", Toast.LENGTH_LONG).show()
         }
+        share.setOnClickListener {
+            Toast.makeText(this, "share", Toast.LENGTH_LONG).show()
+        }
     }
 }
