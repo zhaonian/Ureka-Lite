@@ -86,8 +86,8 @@
                     android:orientation="horizontal">
                 <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/authorAvatar"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:adjustViewBounds="true"
                         fresco:viewAspectRatio="1"
                         app:roundAsCircle="true"
