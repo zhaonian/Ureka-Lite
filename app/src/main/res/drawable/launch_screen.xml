@@ -10,7 +10,7 @@
     <item>
 
         <bitmap
-                android:src="@drawable/jay_chou"
+                android:src="@drawable/initial_screen"
                 android:gravity="center"/>
 
     </item>
