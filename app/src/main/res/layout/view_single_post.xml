@@ -6,6 +6,7 @@
         xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
         tools:context=".view.SinglePostActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -14,7 +15,6 @@
             android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbar"
@@ -43,6 +43,7 @@
     <!--<include layout="@layout/content_home"/>-->
 
     <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
