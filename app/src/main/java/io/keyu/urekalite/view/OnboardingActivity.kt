@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentActivity
 import com.google.android.material.button.MaterialButton
 import com.ogaclejapan.smarttablayout.SmartTabLayout
 import io.keyu.urekalite.service.SharedPreferenceService
+import androidx.core.content.ContextCompat
+import android.animation.ArgbEvaluator
 
 class OnboardingActivity : FragmentActivity() {
 
@@ -45,13 +47,40 @@ class OnboardingActivity : FragmentActivity() {
         }
         pager.adapter = adapter
 
+        val color1 = ContextCompat.getColor(this, R.color.cyan)
+        val color2 = ContextCompat.getColor(this, R.color.orange)
+        val color3 = ContextCompat.getColor(this, R.color.green)
+
+        val colorList = intArrayOf(color1, color2, color3)
+
+        val evaluator = ArgbEvaluator()
+
+        pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                val colorUpdate = evaluator.evaluate(
+                    positionOffset,
+                    colorList[position],
+                    colorList[if (position == 2) position else position + 1]
+                ) as Int
+                pager.setBackgroundColor(colorUpdate)
+            }
+
+            override fun onPageSelected(position: Int) {
+                when (position) {
+                    0 -> pager.setBackgroundColor(color1)
+                    1 -> pager.setBackgroundColor(color2)
+                    2 -> pager.setBackgroundColor(color3)
+                }
+            }
+        })
+
         indicator.setViewPager(pager)
         indicator.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
 
             override fun onPageSelected(position: Int) {
                 if (position == 2) {
                     skip.visibility = View.GONE
-                    next.text = "Done"
+                    next.text = "Ureka!"
                 } else {
                     skip.visibility = View.VISIBLE
                     next.text = "Next"
