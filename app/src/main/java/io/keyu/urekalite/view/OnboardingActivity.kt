@@ -23,8 +23,8 @@ class OnboardingActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_onboarding)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         pager = findViewById(R.id.pager)
         indicator = findViewById(R.id.indicator)
@@ -50,12 +50,11 @@ class OnboardingActivity : FragmentActivity() {
         val color1 = ContextCompat.getColor(this, R.color.cyan)
         val color2 = ContextCompat.getColor(this, R.color.orange)
         val color3 = ContextCompat.getColor(this, R.color.green)
-
         val colorList = intArrayOf(color1, color2, color3)
-
         val evaluator = ArgbEvaluator()
 
         pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 val colorUpdate = evaluator.evaluate(
                     positionOffset,
@@ -72,6 +71,8 @@ class OnboardingActivity : FragmentActivity() {
                     2 -> pager.setBackgroundColor(color3)
                 }
             }
+
+            override fun onPageScrollStateChanged(state: Int) {}
         })
 
         indicator.setViewPager(pager)
