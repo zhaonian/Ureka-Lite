@@ -47,9 +47,9 @@ class OnboardingActivity : FragmentActivity() {
         }
         pager.adapter = adapter
 
-        val color1 = ContextCompat.getColor(this, R.color.cyan)
-        val color2 = ContextCompat.getColor(this, R.color.orange)
-        val color3 = ContextCompat.getColor(this, R.color.green)
+        val color1 = ContextCompat.getColor(this, R.color.orange_light)
+        val color2 = ContextCompat.getColor(this, R.color.green_light)
+        val color3 = ContextCompat.getColor(this, R.color.purple_light)
         val colorList = intArrayOf(color1, color2, color3)
         val evaluator = ArgbEvaluator()
 
