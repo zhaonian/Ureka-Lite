@@ -58,15 +58,19 @@
                 android:divider="@drawable/vertical_item_divider"
                 android:orientation="vertical">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/postImage"
+            <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    fresco:viewAspectRatio="1"
-                    fresco:actualImageScaleType="fitXY"
-                    fresco:failureImage="@drawable/ic_failure_image"
-                    android:background="#b2dfdb"/>
+                    android:layout_height="400dp"/>
+            <!--<com.facebook.drawee.view.SimpleDraweeView-->
+            <!--android:id="@+id/postImage"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:adjustViewBounds="true"-->
+            <!--fresco:viewAspectRatio="1"-->
+            <!--fresco:actualImageScaleType="fitXY"-->
+            <!--fresco:failureImage="@drawable/ic_failure_image"-->
+            <!--android:background="#b2dfdb"/>-->
 
             <TextView
                     android:id="@+id/postTitle"
