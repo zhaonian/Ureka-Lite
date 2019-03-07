@@ -1,10 +1,14 @@
 package io.keyu.urekalite.adapter
 
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import io.keyu.urekalite.UrekaLiteApplication.Companion.context
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.view.PostView
+import io.keyu.urekalite.view.SinglePostActivity
 
 class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
@@ -24,19 +28,27 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
         holder.postView.apply {
             setPostOwnerDisplayName(curPost.content.userDisplayedName)
             setPostOwnerRole(curPost.content.role)
+            setMediaList(
+                if (curPost.content.smallMediaPaths.isNullOrEmpty()) emptyList()
+                else curPost.content.smallMediaPaths.map { mediaPath ->
+                    "${Contract.UREKA_AWS}/post/$mediaPath/downloadMedia?mediaFidelity=Medium"
+                }
+            )
             setPostOwnerAvatar("${Contract.UREKA_AWS}/avatar/${curPost.content.userAvatar}/downloadMedia?mediaFidelity=Small")
             setPostText(curPost.content.text)
-            setPostImage(
-                if (!curPost.content.smallMediaPaths.isNullOrEmpty())
-                    "${Contract.UREKA_AWS}/post/${curPost.content.smallMediaPaths[0]}/downloadMedia?mediaFidelity=Original"
-                else ""
-            )
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
+        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, SinglePostActivity::class.java)
+            intent.putExtra("PostData", curPost)
+            intent.flags = FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
         }
     }
 
     fun setPostList(postList: List<Post>) {
         this.postList = postList
+        notifyDataSetChanged()
     }
 }

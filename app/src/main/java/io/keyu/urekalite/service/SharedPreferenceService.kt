@@ -8,6 +8,7 @@ import io.keyu.urekalite.view.LoginActivity
 
 object SharedPreferenceService {
     private const val UREKA_USER = "ureka"
+    private const val UREKA_ONBOARDING_DONE = "ureka_onboarding_done"
     private const val UREKA_IS_LOGGEDIN = "loggedIn"
     private const val UREKA_TOKEN = "token"
     const val UREKA_EMAIL = "email"
@@ -40,6 +41,16 @@ object SharedPreferenceService {
         editor.putString(UREKA_OCCUPATION, occupation)
         editor.putString(UREKA_ROLE, role)
         editor.putBoolean(UREKA_IS_LOGGEDIN, true)
+        editor.apply()
+    }
+
+    fun isOnboardingDone(ctx: Context): Boolean {
+        return getSharedPreferences(ctx).getBoolean(UREKA_ONBOARDING_DONE, false)
+    }
+
+    fun setOnboardingStatus(ctx: Context, done: Boolean) {
+        val editor = getSharedPreferences(ctx).edit()
+        editor.putBoolean(UREKA_ONBOARDING_DONE, done)
         editor.apply()
     }
 

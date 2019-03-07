@@ -52,7 +52,6 @@ class PostListFragment : Fragment() {
     private fun getPostList() {
         postListViewModel.getPostList().observe(this, Observer<List<Post>> { resource ->
             postListAdapter.setPostList(resource)
-            postListAdapter.notifyDataSetChanged()
         })
     }
 }

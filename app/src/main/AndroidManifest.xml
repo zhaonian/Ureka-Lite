@@ -15,7 +15,7 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".view.SplashActivity"
-                android:theme="@style/AppTheme.Launcher">
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -45,9 +45,17 @@
         <activity
                 android:name=".view.ProfileActivity"
                 android:theme="@style/AppTheme.NoActionBar"></activity>
-
         <activity android:name=".view.TermsWebViewActivity"></activity>
 
+        <activity
+                android:name=".view.SinglePostActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+                android:name=".view.OnboardingActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

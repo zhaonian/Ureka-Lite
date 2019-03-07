@@ -1,7 +1,10 @@
 package io.keyu.urekalite.model.post
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Content(
     @field:Json(name = "id") val id: Long,
     @field:Json(name = "urekaId") val urekaId: String,
@@ -23,16 +26,18 @@ data class Content(
 
     @field:Json(name = "channelGroupGroup") val channelGroupGroup: ChannelGroupGroup,
     @field:Json(name = "channelGroup") val channelGroup: ChannelGroup
-)
+) : Parcelable
 
+@Parcelize
 data class ChannelGroupGroup(
     @Json(name = "id") val id: Long,
     @Json(name = "groupGroupName") val groupGroupName: String,
     @Json(name = "groupGroupNameAbbr") val groupGroupNameAbbr: String
-)
+) : Parcelable
 
+@Parcelize
 data class ChannelGroup(
     @Json(name = "id") val id: Long,
     @Json(name = "groupName") val groupName: String,
     @Json(name = "groupNameAbbr") val groupNameAbbr: String
-)
+) : Parcelable
