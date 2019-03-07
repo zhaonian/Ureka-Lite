@@ -31,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP and Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
-            SharedPreferenceService.isOnboardingDone(this) -> {
+            !SharedPreferenceService.isOnboardingDone(this) -> {
                 val intent = Intent(this, OnboardingActivity::class.java)
                 startActivity(intent)
             }
@@ -40,11 +40,5 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-//        when {
-//            user == null -> OnboardingActivity.start(this)
-//            user.hasPhoneNumber() -> EditProfileActivity.start(this)
-//            user.hasSubscriptionExpired() -> PaymentPlansActivity.start(this)
-//            else -> HomeActivity.start(this)
-//        }
     }
 }

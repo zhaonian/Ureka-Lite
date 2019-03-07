@@ -102,7 +102,7 @@ class OnboardingActivity : FragmentActivity() {
 
     private fun finishOnboarding() {
         SharedPreferenceService.setOnboardingStatus(this, true)
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }
