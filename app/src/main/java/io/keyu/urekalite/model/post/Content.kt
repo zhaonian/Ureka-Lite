@@ -30,14 +30,15 @@ data class Content(
 
 @Parcelize
 data class ChannelGroupGroup(
-    @Json(name = "id") val id: Long,
-    @Json(name = "groupGroupName") val groupGroupName: String,
-    @Json(name = "groupGroupNameAbbr") val groupGroupNameAbbr: String
+    @field:Json(name = "id") val id: Long,
+    @field:Json(name = "groupGroupName") val groupGroupName: String,
+    @field:Json(name = "groupGroupNameAbbr") val groupGroupNameAbbr: String,
+    @field:Json(name = "channelGroups") val channelGroups: List<ChannelGroup>? = null
 ) : Parcelable
 
 @Parcelize
 data class ChannelGroup(
-    @Json(name = "id") val id: Long,
-    @Json(name = "groupName") val groupName: String,
-    @Json(name = "groupNameAbbr") val groupNameAbbr: String
+    @field:Json(name = "id") val id: Long,
+    @field:Json(name = "groupName") val groupName: String,
+    @field:Json(name = "groupNameAbbr") val groupNameAbbr: String
 ) : Parcelable
