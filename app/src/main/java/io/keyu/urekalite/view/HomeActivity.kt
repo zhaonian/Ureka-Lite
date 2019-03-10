@@ -80,7 +80,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.navChannel -> {
                 toolbar.visibility = View.VISIBLE
                 toolbarSearch.visibility = View.GONE
-                var selectedFragment = ChannelListFragment()
+                var selectedFragment = BranchListFragment()
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.homeContentContainer, selectedFragment)
                 transaction.commit()

@@ -1,7 +1,7 @@
 package io.keyu.urekalite.service
 
 import io.keyu.urekalite.UrekaLiteApplication
-import io.keyu.urekalite.model.post.ChannelGroupGroup
+import io.keyu.urekalite.model.response.BranchListReponse
 import io.reactivex.Observable
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -16,7 +16,7 @@ import java.io.IOException
 interface ChannelDataService {
 
     @GET("groupTree")
-    fun getBranchList(): Observable<List<ChannelGroupGroup>>
+    fun getBranchList(): Observable<BranchListReponse>
 
     companion object {
 
