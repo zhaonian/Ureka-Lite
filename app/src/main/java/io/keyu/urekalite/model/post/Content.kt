@@ -24,12 +24,12 @@ data class Content(
 
     @field:Json(name = "role") val role: String,
 
-    @field:Json(name = "channelGroupGroup") val channelGroupGroup: ChannelGroupGroup?,
+    @field:Json(name = "channelGroupGroup") val branch: Branch?,
     @field:Json(name = "channelGroup") val channelGroup: ChannelGroup?
 ) : Parcelable
 
 @Parcelize
-data class ChannelGroupGroup(
+data class Branch(
     @field:Json(name = "id") val id: Long,
     @field:Json(name = "groupGroupName") val groupGroupName: String,
     @field:Json(name = "groupGroupNameAbbr") val groupGroupNameAbbr: String,

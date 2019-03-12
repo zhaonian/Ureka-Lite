@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import io.keyu.urekalite.R
 import io.keyu.urekalite.adapter.BranchRecyclerViewAdapter
-import io.keyu.urekalite.model.post.ChannelGroupGroup
+import io.keyu.urekalite.model.post.Branch
 import io.keyu.urekalite.viewmodel.BranchListViewModel
 
 class BranchListFragment : Fragment() {
@@ -50,7 +50,7 @@ class BranchListFragment : Fragment() {
     }
 
     private fun getBranchList() {
-        branchListViewModel.getBranchList().observe(this, Observer<List<ChannelGroupGroup>> { resource ->
+        branchListViewModel.getBranchList().observe(this, Observer<List<Branch>> { resource ->
             branchListAdapter.setBranchList(resource)
         })
     }

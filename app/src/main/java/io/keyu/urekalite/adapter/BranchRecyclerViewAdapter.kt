@@ -2,12 +2,12 @@ package io.keyu.urekalite.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.keyu.urekalite.model.post.ChannelGroupGroup
+import io.keyu.urekalite.model.post.Branch
 import io.keyu.urekalite.view.BranchView
 
 class BranchRecyclerViewAdapter : RecyclerView.Adapter<BranchViewHolder>() {
 
-    private var branchList: List<ChannelGroupGroup> = ArrayList()
+    private var branchList: List<Branch> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BranchViewHolder {
         // create a new view
@@ -23,7 +23,7 @@ class BranchRecyclerViewAdapter : RecyclerView.Adapter<BranchViewHolder>() {
         holder.branchView.setText(curBranch.groupGroupName)
     }
 
-    fun setBranchList(branchList: List<ChannelGroupGroup>) {
+    fun setBranchList(branchList: List<Branch>) {
         this.branchList = branchList
         notifyDataSetChanged()
     }
