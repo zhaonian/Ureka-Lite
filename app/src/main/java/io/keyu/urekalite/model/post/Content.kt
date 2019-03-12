@@ -7,15 +7,15 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Content(
     @field:Json(name = "id") val id: Long,
-    @field:Json(name = "urekaId") val urekaId: String,
+    @field:Json(name = "urekaId") val urekaId: String?,
 
     @field:Json(name = "channelId") val channelId: Long?,
     @field:Json(name = "channelTitle") val channelTitle: String?,
 
-    @field:Json(name = "userId") val userId: Long,
-    @field:Json(name = "userName") val userName: String,
-    @field:Json(name = "userDisplayedName") val userDisplayedName: String,
-    @field:Json(name = "userAvatar") val userAvatar: String,
+    @field:Json(name = "userId") val postOwnerId: Long?,
+    @field:Json(name = "userName") val postOwnerUserName: String,
+    @field:Json(name = "userDisplayedName") val postOwnerDisplayedName: String,
+    @field:Json(name = "userAvatar") val postOwnerAvatar: String,
 
     @field:Json(name = "title") val title: String,
     @field:Json(name = "link") val link: String,
@@ -24,8 +24,8 @@ data class Content(
 
     @field:Json(name = "role") val role: String,
 
-    @field:Json(name = "channelGroupGroup") val channelGroupGroup: ChannelGroupGroup,
-    @field:Json(name = "channelGroup") val channelGroup: ChannelGroup
+    @field:Json(name = "channelGroupGroup") val channelGroupGroup: ChannelGroupGroup?,
+    @field:Json(name = "channelGroup") val channelGroup: ChannelGroup?
 ) : Parcelable
 
 @Parcelize
@@ -33,7 +33,7 @@ data class ChannelGroupGroup(
     @field:Json(name = "id") val id: Long,
     @field:Json(name = "groupGroupName") val groupGroupName: String,
     @field:Json(name = "groupGroupNameAbbr") val groupGroupNameAbbr: String,
-    @field:Json(name = "channelGroups") val channelGroups: List<ChannelGroup>? = null
+    @field:Json(name = "channelGroups") val channelGroups: List<ChannelGroup>?
 ) : Parcelable
 
 @Parcelize

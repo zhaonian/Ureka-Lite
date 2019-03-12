@@ -24,7 +24,7 @@ class PostListDataSource {
                 "text, text texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
@@ -48,7 +48,7 @@ class PostListDataSource {
                 "text, texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
@@ -72,7 +72,7 @@ class PostListDataSource {
                 "text, text texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
@@ -96,7 +96,7 @@ class PostListDataSource {
                 "text, text texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
@@ -120,7 +120,7 @@ class PostListDataSource {
                 "text, text texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
@@ -144,7 +144,7 @@ class PostListDataSource {
                 "text, text texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
@@ -168,7 +168,7 @@ class PostListDataSource {
                 "text, text texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
                 listOf("1", "2"),
                 "engineer",
-                ChannelGroupGroup(111, "ggn", "ggn_abbr"),
+                ChannelGroupGroup(111, "ggn", "ggn_abbr", null),
                 ChannelGroup(111, "gn", "gn_abbr")
             ),
             ActionCount(bookmark = 1L, like = 2L, comment = 2L, share = 0L),
