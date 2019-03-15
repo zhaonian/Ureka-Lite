@@ -23,7 +23,7 @@ class BookmarkGridViewAdapter(
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
         holder.postTitle.text = itemList[position].content.title
         holder.postImage.setImageURI("hehe")
-        holder.postAuthor.text = itemList[position].content.userDisplayedName
+        holder.postAuthor.text = itemList[position].content.postOwnerDisplayedName
         holder.postText.text = itemList[position].content.text
     }
 

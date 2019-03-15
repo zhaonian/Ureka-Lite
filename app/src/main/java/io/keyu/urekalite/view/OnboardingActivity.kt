@@ -80,10 +80,8 @@ class OnboardingActivity : FragmentActivity() {
 
             override fun onPageSelected(position: Int) {
                 if (position == 2) {
-                    skip.visibility = View.GONE
                     next.text = "Ureka!"
                 } else {
-                    skip.visibility = View.VISIBLE
                     next.text = "Next"
                 }
             }

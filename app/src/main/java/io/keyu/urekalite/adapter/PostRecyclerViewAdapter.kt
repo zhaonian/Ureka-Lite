@@ -26,7 +26,7 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val curPost = postList[position]
         holder.postView.apply {
-            setPostOwnerDisplayName(curPost.content.userDisplayedName)
+            setPostOwnerDisplayName(curPost.content.postOwnerDisplayedName)
             setPostOwnerRole(curPost.content.role)
             setMediaList(
                 if (curPost.content.smallMediaPaths.isNullOrEmpty()) emptyList()
@@ -34,7 +34,7 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
                     "${Contract.UREKA_AWS}/post/$mediaPath/downloadMedia?mediaFidelity=Medium"
                 }
             )
-            setPostOwnerAvatar("${Contract.UREKA_AWS}/avatar/${curPost.content.userAvatar}/downloadMedia?mediaFidelity=Small")
+            setPostOwnerAvatar("${Contract.UREKA_AWS}/avatar/${curPost.content.postOwnerAvatar}/downloadMedia?mediaFidelity=Small")
             setPostText(curPost.content.text)
             setLikeState(curPost.liked)
             setBookmarkState(curPost.bookmarked)
@@ -50,5 +50,14 @@ class PostRecyclerViewAdapter : RecyclerView.Adapter<PostViewHolder>() {
     fun setPostList(postList: List<Post>) {
         this.postList = postList
         notifyDataSetChanged()
+    }
+}
+
+class PostViewHolder private constructor(val postView: PostView) :
+    RecyclerView.ViewHolder(postView) {
+    companion object {
+        @JvmStatic
+        fun from(parent: ViewGroup): PostViewHolder =
+            PostViewHolder(PostView(parent.context))
     }
 }

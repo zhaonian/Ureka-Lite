@@ -12,7 +12,7 @@ object SharedPreferenceService {
     private const val UREKA_IS_LOGGEDIN = "loggedIn"
     private const val UREKA_TOKEN = "token"
     const val UREKA_EMAIL = "email"
-    const val UREKA_USERNAME = "userName"
+    const val UREKA_USERNAME = "username"
     const val UREKA_FULLNAME = "fullname"
     const val UREKA_AVATAR = "avatar"
     const val UREKA_OCCUPATION = "occupation"
