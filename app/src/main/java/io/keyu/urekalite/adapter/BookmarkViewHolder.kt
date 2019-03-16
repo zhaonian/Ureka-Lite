@@ -1,16 +1,16 @@
 package io.keyu.urekalite.adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Typeface
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import io.keyu.urekalite.R
-import android.app.AlertDialog
-import android.view.LayoutInflater
-import android.view.MotionEvent
 
 class BookmarkViewHolder(
     context: Context,
