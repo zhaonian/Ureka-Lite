@@ -31,7 +31,7 @@ class BookmarkGridFragment : Fragment(), BookmarkClickListener {
 
         activity!!.supportFragmentManager
             .beginTransaction()
-            .addSharedElement(holder.postImage, "kittenImage")
+            .addSharedElement(holder.postImage, "postImage")
             .replace(R.id.homeContentContainer, kittenDetails)
             .addToBackStack(null)
             .commit()
