@@ -20,15 +20,41 @@
                 android:padding="16dp"
                 android:orientation="horizontal">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/postOwnerAvatar"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:adjustViewBounds="true"
-                    fresco:viewAspectRatio="1"
-                    app:roundAsCircle="true"
-                    fresco:actualImageScaleType="centerCrop"
-                    fresco:failureImage="@mipmap/ic_launcher_round"/>
+            <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/postOwnerAvatar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        fresco:viewAspectRatio="1"
+                        fresco:roundAsCircle="true"
+                        fresco:actualImageScaleType="centerCrop"
+                        fresco:failureImage="@mipmap/ic_launcher_round"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/verifiedIcon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="top|end"
+                        android:adjustViewBounds="true"
+                        fresco:roundAsCircle="true"
+                        fresco:roundingBorderWidth="2dp"
+                        fresco:roundingBorderColor="@color/colorPrimaryDark"
+                        fresco:placeholderImageScaleType="fitCenter"
+                        fresco:placeholderImage="@drawable/ic_verified"/>
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="140"-->
+                <!--android:textSize="10sp"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--android:layout_gravity="bottom|right"/>-->
+
+            </FrameLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
