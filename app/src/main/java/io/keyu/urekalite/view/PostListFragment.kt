@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import io.keyu.urekalite.R
 import io.keyu.urekalite.adapter.PostRecyclerViewAdapter
+import io.keyu.urekalite.model.Resource
+import io.keyu.urekalite.model.Status
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.viewmodel.PostListViewModel
 
@@ -50,8 +52,12 @@ class PostListFragment : Fragment() {
     }
 
     private fun getPostList() {
-        postListViewModel.getPostList().observe(this, Observer<List<Post>> { resource ->
-            postListAdapter.setPostList(resource)
+        postListViewModel.getPostList().observe(this, Observer<Resource<List<Post>>> { resource ->
+            when (resource.status) {
+                Status.SUCCESS -> {
+                    postListAdapter.setPostList(resource.data ?: emptyList())
+                }
+            }
         })
     }
 }

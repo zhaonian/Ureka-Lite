@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import okhttp3.OkHttpClient
-import okhttp3.Response
+import retrofit2.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.http.Query
 import java.io.IOException
@@ -32,7 +32,7 @@ interface PostDataService {
 
         private val client = OkHttpClient.Builder().addInterceptor(object : Interceptor {
             @Throws(IOException::class)
-            override fun intercept(chain: Interceptor.Chain): Response {
+            override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
                 val newRequest = chain.request().newBuilder()
                     .addHeader(
                         "Authorization",
