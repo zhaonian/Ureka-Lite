@@ -16,6 +16,7 @@ import io.keyu.urekalite.model.Resource
 import io.keyu.urekalite.model.Status
 import io.keyu.urekalite.model.post.Post
 import io.keyu.urekalite.viewmodel.PostListViewModel
+import kotlinx.android.synthetic.main.view_post_list.postListLoader
 
 class PostListFragment : Fragment() {
 
@@ -54,8 +55,14 @@ class PostListFragment : Fragment() {
     private fun getPostList() {
         postListViewModel.getPostList().observe(this, Observer<Resource<List<Post>>> { resource ->
             when (resource.status) {
+                Status.LOADING -> {
+                    postListLoader.visibility = View.VISIBLE
+                }
                 Status.SUCCESS -> {
+                    postListLoader.visibility = View.GONE
                     postListAdapter.setPostList(resource.data ?: emptyList())
+                }
+                Status.ERROR -> {
                 }
             }
         })
