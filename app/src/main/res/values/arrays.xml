@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="countries">
+        <item>Astronomy</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Computer Science</item>
+        <item>Earth Science</item>
+        <item>Engineering</item>
+        <item>Health Science</item>
+        <item>Mathematics</item>
+        <item>Physics</item>
+        <item>Social Science</item>
+    </string-array>
+
+    <integer-array name="images">
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+        <item>@drawable/science</item>
+    </integer-array>
+
+    <integer-array name="colors">
+        <item>@color/roseStart</item>
+        <item>@color/roseEnd</item>
+        <item>@color/blueStart</item>
+        <item>@color/blueEnd</item>
+        <item>@color/greenStart</item>
+        <item>@color/greenEnd</item>
+        <item>@color/purpleStart</item>
+        <item>@color/purpleEnd</item>
+    </integer-array>
+
+</resources>

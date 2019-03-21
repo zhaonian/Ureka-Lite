@@ -1,27 +1,22 @@
 package io.keyu.urekalite.service
 
 import io.keyu.urekalite.UrekaLiteApplication
-import io.keyu.urekalite.model.post.Post
+import io.keyu.urekalite.model.response.BranchListReponse
 import io.reactivex.Observable
 import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import okhttp3.OkHttpClient
-import retrofit2.Response
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.http.Query
 import java.io.IOException
 
-interface PostDataService {
+interface ChannelDataService {
 
-    @GET(".")
-    fun getPosts(
-        @Query(value = "offset") offset: Int = 10,
-        @Query(value = "limit") limit: Int = 20,
-        @Query(value = "subscribedOnly") subscribedOnly: Boolean = false
-    ): Observable<List<Post>>
+    @GET("groupTree")
+    fun getBranchList(): Observable<BranchListReponse>
 
     companion object {
 
@@ -32,7 +27,7 @@ interface PostDataService {
 
         private val client = OkHttpClient.Builder().addInterceptor(object : Interceptor {
             @Throws(IOException::class)
-            override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
+            override fun intercept(chain: Interceptor.Chain): Response {
                 val newRequest = chain.request().newBuilder()
                     .addHeader(
                         "Authorization",
@@ -44,12 +39,12 @@ interface PostDataService {
             }
         }).addInterceptor(interceptor).build()
 
-        val retrofit: PostDataService = Retrofit.Builder()
-            .baseUrl("${Contract.UREKA_AWS}/post/")
+        val retrofit: ChannelDataService = Retrofit.Builder()
+            .baseUrl("${Contract.UREKA_AWS}/channel/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
             .build()
-            .create(PostDataService::class.java)
+            .create(ChannelDataService::class.java)
     }
 }

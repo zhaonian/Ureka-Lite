@@ -1,12 +1,13 @@
 package io.keyu.urekalite.view
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import io.keyu.urekalite.R
 import kotlinx.android.synthetic.main.view_single_post.*
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 import io.keyu.urekalite.adapter.MediaListViewPagerAdapter
 import io.keyu.urekalite.adapter.ZoomOutPageTransformer
 
@@ -44,16 +45,24 @@ class SinglePostActivity : AppCompatActivity() {
 
         // bottom tool buttons
         like.setOnClickListener {
-            Toast.makeText(this, "like", Toast.LENGTH_LONG).show()
+            like.playAnimation()
         }
         bookmark.setOnClickListener {
-            Toast.makeText(this, "bm", Toast.LENGTH_LONG).show()
+            bookmark.playAnimation()
         }
         link.setOnClickListener {
-            Toast.makeText(this, "link", Toast.LENGTH_LONG).show()
+            Snackbar.make(nestedScrollView, "I'm just dummy link :D", Snackbar.LENGTH_SHORT).show()
         }
         share.setOnClickListener {
-            Toast.makeText(this, "share", Toast.LENGTH_LONG).show()
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    "Discover Science on Ureka at: https://play.google.com/store/apps/details?id=com.urekascience.ureka"
+                )
+            }
+            startActivity(shareIntent)
         }
     }
 }

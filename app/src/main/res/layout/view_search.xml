@@ -9,7 +9,7 @@
     <io.keyu.urekalite.view.UserHorizontalScrollView
             android:id="@+id/userSearchList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/bookLottieView"

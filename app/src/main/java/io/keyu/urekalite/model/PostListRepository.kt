@@ -13,10 +13,10 @@ class PostListRepository {
 
     private val TAG = PostListRepository::class.simpleName
 
-    private val postListLiveData: MutableLiveData<List<Post>> = MutableLiveData()
+    private val postListLiveData: MutableLiveData<Resource<List<Post>>> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    fun getPostListLiveData(): MutableLiveData<List<Post>> {
+    fun getPostListLiveData(): MutableLiveData<Resource<List<Post>>> {
         val postList: MutableList<Post> = ArrayList()
         val retrofitInstance = PostDataService.retrofit
         val postListObservable = retrofitInstance.getPosts()
@@ -27,7 +27,14 @@ class PostListRepository {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<Post>() {
 
+                    override fun onStart() {
+                        super.onStart()
+                        postListLiveData.value = (Resource(Status.LOADING, null, null))
+                    }
+
                     override fun onError(e: Throwable) {
+                        // network error
+                        postListLiveData.value = (Resource(Status.ERROR, null, e.message))
                         // moshi serialization error
                         Log.d(TAG, e.message)
                     }
@@ -37,7 +44,7 @@ class PostListRepository {
                     }
 
                     override fun onComplete() {
-                        postListLiveData.postValue(postList)
+                        postListLiveData.value = (Resource(Status.SUCCESS, postList))
                     }
                 })
         )
