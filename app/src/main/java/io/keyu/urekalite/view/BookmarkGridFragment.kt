@@ -1,6 +1,5 @@
 package io.keyu.urekalite.view
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,12 +21,11 @@ class BookmarkGridFragment : Fragment(), BookmarkClickListener {
         // Note that we need the API version check here because the actual transition classes (e.g. Fade)
         // are not in the support library and are only available in API 21+. The methods we are calling on the Fragment
         // ARE available in the support library (though they don't do anything on API < 21)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            kittenDetails.sharedElementEnterTransition = DetailsTransition()
-            kittenDetails.enterTransition = Fade()
-            exitTransition = Fade()
-            kittenDetails.sharedElementReturnTransition = DetailsTransition()
-        }
+        kittenDetails.sharedElementEnterTransition = DetailsTransition()
+        kittenDetails.enterTransition = Fade()
+        exitTransition = Fade()
+        kittenDetails.sharedElementReturnTransition = DetailsTransition()
+
 
         activity!!.supportFragmentManager
             .beginTransaction()

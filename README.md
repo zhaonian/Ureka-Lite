@@ -1,4 +1,8 @@
 ![kotlin](https://img.shields.io/badge/language-kotlin%20100%25-orange.svg) ![CircleCI](https://circleci.com/gh/zhaonian/Ureka-Lite.svg?style=shield&circle-token=b618ebcdb6af9367cb7c5a724ccd64668b311945)
+
+## Video Demo
+http://www.youtube.com/watch?v=l_XRPNYbou0
+
 ## Note
 
 * 100% Kotlin
