@@ -1,31 +1,52 @@
 package io.keyu.urekalite.model.post
 
 import android.os.Parcelable
+import androidx.room.Ignore
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Content(
     @field:Json(name = "id") val id: Long,
-    @field:Json(name = "urekaId") val urekaId: String?,
 
-    @field:Json(name = "channelId") val channelId: Long?,
+    @Ignore
+    @field:Json(name = "urekaId")
+    val urekaId: String?,
+
+    @Ignore
+    @field:Json(name = "channelId")
+    val channelId: Long?,
+
     @field:Json(name = "channelTitle") val channelTitle: String?,
 
-    @field:Json(name = "userId") val postOwnerId: Long?,
+    @Ignore
+    @field:Json(name = "userId")
+    val postOwnerId: Long?,
+
     @field:Json(name = "userName") val postOwnerUserName: String,
     @field:Json(name = "userDisplayedName") val postOwnerDisplayedName: String,
-    @field:Json(name = "userAvatar") val postOwnerAvatar: String,
+
+    @Ignore
+    @field:Json(name = "userAvatar")
+    val postOwnerAvatar: String,
 
     @field:Json(name = "title") val title: String,
     @field:Json(name = "link") val link: String,
     @field:Json(name = "text") val text: String,
-    @field:Json(name = "smallMediaPaths") val smallMediaPaths: List<String>?,
+
+    @Ignore
+    @field:Json(name = "smallMediaPaths")
+    val smallMediaPaths: List<String>?,
 
     @field:Json(name = "role") val role: String,
 
-    @field:Json(name = "channelGroupGroup") val branch: Branch?,
-    @field:Json(name = "channelGroup") val channelGroup: ChannelGroup?
+    @Ignore
+    @field:Json(name = "channelGroupGroup")
+    val branch: Branch?,
+
+    @Ignore
+    @field:Json(name = "channelGroup")
+    val channelGroup: ChannelGroup?
 ) : Parcelable
 
 @Parcelize
