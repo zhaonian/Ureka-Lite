@@ -18,7 +18,7 @@ interface PostDataService {
 
     @GET(".")
     fun getPosts(
-        @Query(value = "offset") offset: Int = 10,
+        @Query(value = "offset") offset: Int = 0,
         @Query(value = "limit") limit: Int = 20,
         @Query(value = "subscribedOnly") subscribedOnly: Boolean = false
     ): Observable<List<Post>>
@@ -30,19 +30,16 @@ interface PostDataService {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-        private val client = OkHttpClient.Builder().addInterceptor(object : Interceptor {
-            @Throws(IOException::class)
-            override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
-                val newRequest = chain.request().newBuilder()
-                    .addHeader(
-                        "Authorization",
-                        "Bearer ${SharedPreferenceService.getToken(UrekaLiteApplication.context)}"
-                    )
-                    .addHeader("Content-Type", "application/json")
-                    .build()
-                return chain.proceed(newRequest)
-            }
-        }).addInterceptor(interceptor).build()
+        private val client = OkHttpClient.Builder().addInterceptor { chain ->
+            val newRequest = chain.request().newBuilder()
+                .addHeader(
+                    "Authorization",
+                    "Bearer ${SharedPreferenceService.getToken(UrekaLiteApplication.context)}"
+                )
+                .addHeader("Content-Type", "application/json")
+                .build()
+            chain.proceed(newRequest)
+        }.addInterceptor(interceptor).build()
 
         val retrofit: PostDataService = Retrofit.Builder()
             .baseUrl("${Contract.UREKA_AWS}/post/")
