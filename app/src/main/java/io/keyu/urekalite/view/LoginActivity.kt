@@ -28,6 +28,7 @@ import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 import io.keyu.urekalite.model.Status
 import io.keyu.urekalite.service.SharedPreferenceService
+import io.keyu.urekalite.util.LicenseUtil
 
 class LoginActivity : AppCompatActivity() {
 
@@ -74,8 +75,9 @@ class LoginActivity : AppCompatActivity() {
 
         // singup link onClick
         val signupLinkObservableDisposable = RxView.clicks(signupLink).subscribe {
-            startActivity(Intent(this, SignupActivity::class.java))
-            this.finish()
+            LicenseUtil.showOpenSourceLicenses(this)
+//            startActivity(Intent(this, SignupActivity::class.java))
+//            this.finish()
         }
 
         compositeDisposable.addAll(
