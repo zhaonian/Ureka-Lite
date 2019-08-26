@@ -16,6 +16,10 @@
                 android:id="@+id/nav_terms"
                 android:icon="@drawable/ic_menu_terms"
                 android:title="Terms"/>
+        <item
+                android:id="@+id/nav_licenses"
+                android:icon="@drawable/ic_menu_licenses"
+                android:title="Open Source Licenses"/>
     </group>
 
     <item android:title="Communicate">

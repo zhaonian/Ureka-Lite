@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.keyu.urekalite.R
 import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.service.SharedPreferenceService
+import io.keyu.urekalite.util.LicenseUtil
 import kotlinx.android.synthetic.main.activity_home.drawer_layout
 import kotlinx.android.synthetic.main.activity_home.top_navigation
 import kotlinx.android.synthetic.main.app_bar_home.toolbar
@@ -148,7 +149,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, TermsWebViewActivity::class.java)
                 startActivity(intent)
             }
+            R.id.nav_licenses -> {
+                LicenseUtil.showOpenSourceLicenses(this)
+            }
             R.id.nav_settings -> {
+                LicenseUtil.showOpenSourceLicenses(this)
             }
             R.id.nav_share -> {
                 val shareIntent = Intent().apply {
