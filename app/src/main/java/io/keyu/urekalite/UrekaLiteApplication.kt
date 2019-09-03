@@ -1,9 +1,15 @@
 package io.keyu.urekalite
 
-import android.app.Application
 import com.facebook.drawee.backends.pipeline.Fresco
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
+import io.keyu.urekalite.di.DaggerAppComponent
 
-class UrekaLiteApplication : Application() {
+class UrekaLiteApplication : DaggerApplication() {
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().application(this).build()
+    }
 
     override fun onCreate() {
         super.onCreate()
