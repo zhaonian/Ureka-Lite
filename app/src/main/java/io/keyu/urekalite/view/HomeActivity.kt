@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.android.support.DaggerAppCompatActivity
 import io.keyu.urekalite.R
 import io.keyu.urekalite.service.Contract
 import io.keyu.urekalite.service.SharedPreferenceService
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.app_bar_home.toolbar
 import kotlinx.android.synthetic.main.app_bar_home.toolbarSearch
 import kotlinx.android.synthetic.main.app_bar_home.bottom_navigation
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : DaggerAppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val TAG = HomeActivity::class.simpleName
 

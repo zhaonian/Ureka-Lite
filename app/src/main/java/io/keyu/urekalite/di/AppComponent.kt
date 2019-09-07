@@ -12,7 +12,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        AppModule::class
+        ViewModelFactoryModule::class,
+        AppModule::class,
+        ActivitiesBuilderModule::class
     ]
 )
 interface AppComponent : AndroidInjector<UrekaLiteApplication> {

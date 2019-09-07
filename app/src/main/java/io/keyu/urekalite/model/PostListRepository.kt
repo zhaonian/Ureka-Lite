@@ -8,18 +8,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class PostListRepository {
 
-    private val TAG = PostListRepository::class.simpleName
-
+    @Inject lateinit var postDataService: PostDataService
     private val postListLiveData: MutableLiveData<Resource<List<Post>>> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     fun getPostListLiveData(): MutableLiveData<Resource<List<Post>>> {
         val postList: MutableList<Post> = ArrayList()
-        val retrofitInstance = PostDataService.retrofit
-        val postListObservable = retrofitInstance.getPosts()
+        val postListObservable = postDataService.getPosts()
         compositeDisposable.add(
             postListObservable
                 .flatMapIterable { it }
@@ -53,5 +52,9 @@ class PostListRepository {
 
     fun clear() {
         compositeDisposable.clear()
+    }
+
+    companion object {
+        const val TAG = "PostListRepository"
     }
 }
