@@ -9,6 +9,8 @@ http://www.youtube.com/watch?v=l_XRPNYbou0
 
 * MVVM design pattern
 
+* Jetpack Architecture Components
+
 * reactivex RxKotlin RxAndroid operators: https://github.com/ReactiveX/RxKotlin
 
 * Square Retrofit: https://square.github.io/retrofit/
@@ -18,8 +20,6 @@ http://www.youtube.com/watch?v=l_XRPNYbou0
 * Facebook fresco: https://frescolib.org/ 
 
 * Airbnb Lottie: https://www.lottiefiles.com/
-
-* Google Dagger 2: https://google.github.io/dagger/
 
 * Google Material Design Component Library: https://material.io/develop/android/components/material-card-view/
 
